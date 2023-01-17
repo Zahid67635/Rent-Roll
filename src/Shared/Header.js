@@ -58,7 +58,7 @@ const Header = () => {
                                     className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-500 focus:bg-zinc-50 focus:outline-none focus-visible:outline-none lg:px-8"
                                     href="javascript:void(0)"
                                 >
-                                    <span>Services</span>
+                                    <span>Home</span>
                                 </a>
                             </li>
                             <li role="none" className="flex items-stretch">
@@ -70,7 +70,7 @@ const Header = () => {
                                     className="flex items-center gap-2 py-4 text-zinc-500 transition-colors duration-300 hover:text-zinc-600 focus:bg-zinc-50 focus:outline-none focus-visible:outline-none lg:px-8"
                                     href="javascript:void(0)"
                                 >
-                                    <span>Planning</span>
+                                    <span>Services</span>
                                 </a>
                             </li>
                             <li role="none" className="flex items-stretch">
@@ -90,44 +90,55 @@ const Header = () => {
                                 </button>
                             </li>
                             <li className='flex items-center mr-2'>
-                                <div className="inline-flex items-center divide-x rounded bg-gray-800 text-gray-100 divide-gray-300 dropdown">
-                                    <button type="button" className="px-8 py-3">SIGNUP</button>
-                                    <button type="button" title="Toggle dropdown" className="p-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                        <div class="dropdown-content">
-                                            <a href="#">Buyer</a>
-                                            <a href="#">Seller</a>
-                                        </div>
-                                    </button>
+                                <div className="inline-flex items-center divide-x rounded bg-white-800 text-black divide-black dropdown h-12">
+                                    <div className="px-8 mb-4">
+                                        <button type="button" className='' >SIGNUP</button>
+                                        <button type="button" title="Toggle dropdown" className="p-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                            <div class="dropdown-content">
+                                                <a href="#">Buyer</a>
+                                                <a href="#">Seller</a>
+                                            </div>
+                                        </button>
+                                    </div>
+
                                 </div>
-                            </li>
-                            <li className="flex items-center">
-                                <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
-                                    <span className='font-bold'>LOGOUT</span>
-                                </button>
                             </li>
 
                         </ul>
-                        <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
+                        <div className="flex items-center px-6 lg:ml-0 lg:p-0 menu menu-horizontal">
                             {/*        <!-- Avatar --> */}
-                            <a
-                                href="#"
-                                className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
-                            >
-                                <img
-                                    src="https://i.pravatar.cc/40?img=35"
-                                    alt="user name"
-                                    title="user name"
-                                    width="50"
-                                    height="50"
-                                    className="max-w-full rounded-full"
-                                />
-                                <span className="absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-pink-500 p-1 text-sm text-white">
-                                    <span className="sr-only"> 7 new emails </span>
-                                </span>
-                            </a>
+                            <li tabIndex={0} className='md:mr-44'>
+                                <a
+                                    href="#"
+                                    className="relative bg-black inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
+                                >
+                                    user
+                                </a>
+                                <ul className="menu bg-base-100 w-56 p-2 rounded-box">
+                                    <li>
+                                        <a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                                            Item 2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                            Item 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             {/*        <!-- End Avatar --> */}
                         </div>
                     </nav>
