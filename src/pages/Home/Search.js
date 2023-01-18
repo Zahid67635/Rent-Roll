@@ -2,7 +2,7 @@ import React from 'react';
 
 const Search = () => {
     return (
-        <div className="hero h-[32rem] mb-60" style={{ backgroundImage: `url("https://i.ibb.co/nfWtVVw/exterior.jpg")`, backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+        <div className="hero h-[32rem] mb-20" style={{ backgroundImage: `url("https://i.ibb.co/nfWtVVw/exterior.jpg")`, backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="min-w-md">
@@ -18,7 +18,7 @@ const Search = () => {
                         <div className="form-control mx-2">
                             <label className="input-group">
                                 <span className='bg-black text-white'>P-ID</span>
-                                <input type="text" placeholder="D-1234" className="input input-bordered" />
+                                <input type="text" placeholder="P-1234" className="input input-bordered" />
                             </label>
                         </div>
                         <div className="form-control">
