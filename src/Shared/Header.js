@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css'
 const Header = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
     return (
         <>
             <header className="border-b-1 relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
@@ -51,15 +51,15 @@ const Header = () => {
                                 }`}
                         >
                             <li role="none" className="flex items-stretch">
-                                <a
+                                <Link to='/'
                                     role="menuitem"
                                     aria-haspopup="false"
                                     tabIndex="0"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-500 focus:bg-zinc-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                                    className="flex items-center gap-2 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
                                     href="javascript:void(0)"
                                 >
                                     <span>Home</span>
-                                </a>
+                                </Link>
                             </li>
                             <li role="none" className="flex items-stretch">
                                 <a
@@ -85,9 +85,9 @@ const Header = () => {
                                 </a>
                             </li>
                             <li className="flex items-center mr-3">
-                                <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
+                                <Link to='/login'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
                                     <span className='font-bold'>SIGNIN</span>
-                                </button>
+                                </button></Link>
                             </li>
                             <li className='flex items-center mr-2'>
                                 <div className="inline-flex items-center divide-x rounded bg-white-800 text-black divide-black dropdown h-12">
@@ -98,8 +98,8 @@ const Header = () => {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                             <div class="dropdown-content">
-                                                <a href="#">Buyer</a>
-                                                <a href="#">Seller</a>
+                                                <Link to='/signup/buyer'>Buyer</Link>
+                                                <Link to='/signup/seller'>Seller</Link>
                                             </div>
                                         </button>
                                     </div>
@@ -108,39 +108,20 @@ const Header = () => {
                             </li>
 
                         </ul>
-                        <div className="flex items-center px-6 lg:ml-0 lg:p-0 menu menu-horizontal">
-                            {/*        <!-- Avatar --> */}
-                            <li tabIndex={0} className='md:mr-44'>
-                                <a
-                                    href="#"
-                                    className="relative bg-black inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
-                                >
-                                    user
-                                </a>
-                                <ul className="menu bg-base-100 w-56 p-2 rounded-box">
-                                    <li>
-                                        <a>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                                            Item 2
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                            Item 1
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-                                            Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            {/*        <!-- End Avatar --> */}
+                        {/* ------------- */}
+                        <div className="dropdown dropdown-end my-auto">
+                            <label tabIndex={0} className="btn m-1 btn-square">Click</label>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><a>Your Profile</a></li>
+                                <li><a>Logout</a></li>
+                            </ul>
                         </div>
+                        {/* ------------------ */}
+
+
+
+                        {/*        <!-- End Avatar --> */}
+
                     </nav>
                 </div>
             </header>

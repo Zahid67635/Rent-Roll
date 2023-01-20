@@ -3,7 +3,7 @@ import React from 'react';
 import anim from '../../assets/login.json'
 const Login = () => {
     return (
-        <div className='grid md:grid-cols-2 mb-3'>
+        <div className='grid md:grid-cols-2 my-16'>
             <div className='w-3/4 mx-auto'>
                 <Lottie animationData={anim} loop={true}></Lottie>
             </div>
@@ -21,7 +21,7 @@ const Login = () => {
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
                     </div>
-                    <button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-yellow-600">Sign in</button>
+                    <button className="block w-full p-3 text-center rounded-md text-gray-50 bg-violet-500">Sign in</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
