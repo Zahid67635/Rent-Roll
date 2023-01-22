@@ -7,7 +7,7 @@ const Login = () => {
             <div className='w-3/4 mx-auto'>
                 <Lottie animationData={anim} loop={true}></Lottie>
             </div>
-            <div className="mx-auto mb-2 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800">
+            <div className="mx-auto mb-2 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-xl">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
                 <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">

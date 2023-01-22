@@ -3,7 +3,8 @@ import React from 'react';
 const Acordian = () => {
     return (
         <div className='w-3/4 mx-auto mb-12'>
-            <section className="w-full divide-y divide-slate-200 rounded border border-slate-200 bg-white">
+            <h1 className='text-start mb-5 text-3xl font-bold'>Frequently Asked Questions</h1>
+            <section className="w-full divide-y divide-slate-200 rounded border border-slate-200 bg-white shadow-lg">
                 <details className="group p-4" open>
                     <summary className="relative flex cursor-pointer list-none gap-4 pr-8 font-medium text-slate-700 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900  [&::-webkit-details-marker]:hidden">
                         <svg

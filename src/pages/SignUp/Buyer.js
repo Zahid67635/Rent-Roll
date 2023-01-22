@@ -1,11 +1,28 @@
 import React from 'react';
 
 const Buyer = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target
+        const fname = form.firstname.value
+        const lname = form.lastname.value
+        const name = fname + ' ' + lname
+        const email = form.email.value
+        const contact = form.contact.value
+        const password = form.password.value
+        const address = form.address.value
+        const city = form.city.value
+        const username = form.username.value
+        const type = 'buyer'
+
+        form.reset()
+
+    }
     return (
         <div className='w-3/4 mx-auto mt-6 mb-16'>
             <h1 className='text-3xl text-center font-bold mb-2'>Registration for Buyer Account</h1>
-            <section className="p-6 bg-gray-100 text-gray-900">
-
+            <div className="divider w-1/2 mx-auto"></div>
+            <section className="p-6 bg-gray-100 text-gray-900 shadow-xl">
                 <form novalidate="" action="" className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
                     <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
                         <div className="space-y-2 col-span-full lg:col-span-1">
@@ -62,10 +79,7 @@ const Buyer = () => {
                                 <label for="password" className="text-sm font-semibold">Password</label>
                                 <input id="password" type="password" placeholder="Give minimum 8 char Password" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-600 mt-2 border-gray-300 text-gray-900 p-1" required />
                             </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="usertype" className="text-sm font-semibold">User Type</label>
-                                <input id="usertype" type="text" placeholder="Type buyer/seller" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-600 mt-2 border-gray-300 text-gray-900 p-1" required />
-                            </div>
+
                             <div className="col-span-full">
                                 <label for="bio" className="text-sm font-semibold">Bio</label>
                                 <textarea id="bio" placeholder="" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-600 mt-2 border-gray-300 text-gray-900"></textarea>
@@ -79,7 +93,7 @@ const Buyer = () => {
                             </div>
                             <div className="col-span-full">
                                 <div className="flex items-center space-x-2">
-                                    <button type="button" className="px-4 py-2 border rounded-md border-gray-800">SignUp</button>
+                                    <button type="button" className="px-4 py-2 border rounded-md border-gray-800">Create Account</button>
                                 </div>
                             </div>
                         </div>
