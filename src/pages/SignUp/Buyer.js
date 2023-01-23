@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../Contexts/ContextProvider';
 
 const Buyer = () => {
+    const { createUser, updateUser } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
     const handleSubmit = (e) => {
+        setSignUpError('');
         e.preventDefault()
         const form = e.target
         const fname = form.firstname.value
@@ -15,6 +19,26 @@ const Buyer = () => {
         const username = form.username.value
         const type = 'buyer'
 
+        createUser(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                const userInfo = {
+                    displayName: name,
+                }
+
+                updateUser(userInfo)
+                    .then(() => {
+                        console.log(userInfo);
+                    })
+                    .catch(err => console.log(err));
+                form.reset()
+
+            })
+            .catch(er => {
+                console.log(er)
+                setSignUpError(er.message)
+            })
         form.reset()
 
     }
@@ -23,7 +47,7 @@ const Buyer = () => {
             <h1 className='text-3xl text-center font-bold mb-2'>Registration for Buyer Account</h1>
             <div className="divider w-1/2 mx-auto"></div>
             <section className="p-6 bg-gray-100 text-gray-900 shadow-xl">
-                <form novalidate="" action="" className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
+                <form onSubmit={handleSubmit} className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
                     <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
                         <div className="space-y-2 col-span-full lg:col-span-1">
                             <p className="font-bold text-xl">Personal Information</p>
@@ -93,7 +117,7 @@ const Buyer = () => {
                             </div>
                             <div className="col-span-full">
                                 <div className="flex items-center space-x-2">
-                                    <button type="button" className="px-4 py-2 border rounded-md border-gray-800">Create Account</button>
+                                    <button type="submit" className="px-4 py-2 border rounded-md border-gray-800">Create Account</button>
                                 </div>
                             </div>
                         </div>

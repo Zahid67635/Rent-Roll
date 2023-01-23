@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Contexts/ContextProvider';
 import './Header.css'
 const Header = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false)
+    const { logOut, user } = useContext(AuthContext)
     return (
         <>
             <header className="border-b-1 relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
@@ -110,12 +113,23 @@ const Header = () => {
 
                         </ul>
                         {/* ------------- */}
-                        <div className="dropdown dropdown-end dropdown-hover my-auto">
-                            <label tabIndex={0} className="btn m-1 btn-square bg-[url('https://i.pravatar.cc/48?img=26')]"></label>
-                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li className='hover-bordered'><a>Your Profile</a></li>
-                                <li className='hover-bordered'><a>Logout</a></li>
-                            </ul>
+                        <div className='flex items-center'>
+                            <div >
+                                {
+                                    user ? <p>Hello, {user?.displayName}</p> : ''
+                                }
+                            </div>
+                            {
+                                user ?
+                                    <div className="dropdown dropdown-end dropdown-hover my-auto ml-1">
+                                        <label tabIndex={0} className="btn m-1 btn-square bg-[url('https://i.pravatar.cc/48?img=26')]"></label>
+                                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                            <li className='hover-bordered'><a>Your Profile</a></li>
+                                            <li className='hover-bordered'><a type='button' onClick={logOut}>Logout</a></li>
+                                        </ul>
+                                    </div> :
+                                    ''
+                            }
                         </div>
                         {/* ------------------ */}
 

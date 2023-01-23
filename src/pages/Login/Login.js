@@ -1,7 +1,30 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import anim from '../../assets/login.json'
+import { AuthContext } from '../../Contexts/ContextProvider';
 const Login = () => {
+    const { signIn, googleSignIn } = useContext(AuthContext)
+    const [signInError, setSignInError] = useState('');
+    const handleSubmit = (e) => {
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        e.preventDefault()
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset()
+            })
+            .catch(er => {
+                console.log(er)
+                setSignInError(er.message)
+            })
+
+    }
+
     return (
         <div className='grid md:grid-cols-2 my-16'>
             <div className='w-3/4 mx-auto'>
@@ -9,10 +32,10 @@ const Login = () => {
             </div>
             <div className="mx-auto mb-2 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-xl">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
-                <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
-                        <label for="username" className="block text-gray-600">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-yellow-600" />
+                        <label for="email" className="block text-gray-600">Email</label>
+                        <input type="email" name="email" id="email" placeholder="xyz@abc.com" className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-yellow-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label for="password" className="block text-gray-600">Password</label>
@@ -21,7 +44,10 @@ const Login = () => {
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
                     </div>
-                    <button className="block w-full p-3 text-center rounded-md text-gray-50 bg-violet-500">Sign in</button>
+                    <div>
+                        {signInError ? <p className='text-red-500'>{signInError}</p> : ''}
+                    </div>
+                    <button type='submit' className="block w-full p-3 text-center rounded-md text-gray-50 bg-violet-500">Sign in</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
