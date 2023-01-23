@@ -1,11 +1,12 @@
 import React from 'react';
 
-const House = () => {
+const House = ({ info }) => {
+    const { owner, price, space, photo, rooms, address, ownerPhoto } = info
     return (
-        <div className='grid grid-cols-3 gap-2 w-3/4 mx-auto'>
-            <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+        <div className=''>
+            <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300">
                 {/*  <!-- Header--> */}
-                <div className="p-6">
+                <div className="p-4 bg-slate-200">
                     <header className="flex gap-4">
                         <a
                             href="#"
@@ -24,14 +25,14 @@ const House = () => {
                             <h3 className="text-xl font-medium text-slate-700">
                                 Mary Jay
                             </h3>
-                            <p className="text-sm text-slate-400"> jun 3 2023</p>
+                            <p className="text-sm text-slate-600"> jun 3 2023</p>
                         </div>
                     </header>
                 </div>
                 {/*  <!-- Image --> */}
                 <figure>
                     <img
-                        src="https://picsum.photos/id/146/800/600"
+                        src="https://i.ibb.co/nfWtVVw/exterior.jpg"
                         alt="card image"
                         className="aspect-video w-full"
                     />
@@ -40,11 +41,12 @@ const House = () => {
                 <div className="p-6 font-bold">
                     <div className=''>
                         <div className='flex justify-between mb-3'>
-                            <p>Space: 1200sq</p>
+                            <p>Space: 1200 sq-ft</p>
                             <p>Location: Dhaka</p>
                         </div>
                         <p>Bedroom: 3 , Bathroom: 2 , Belcony: 2</p>
                     </div>
+                    <h1 className='text-xl'>Price: </h1>
                 </div>
                 {/*  <!-- Action icon buttons --> */}
                 <div className="flex justify-between items-center gap-2 p-2 pt-0 mx-4 mb-2">

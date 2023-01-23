@@ -1,0 +1,86 @@
+[
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 7000,
+        "space": 900,
+        "rooms": {
+            "bed": 3,
+            "bathroom": 2,
+            "belcony": 1
+        },
+        "photo": ""
+    },
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 8000,
+        "space": 950,
+        "rooms": {
+            "bed": 2,
+            "bathroom": 1,
+            "belcony": 1
+        },
+        "photo": ""
+    },
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 7500,
+        "space": 980,
+        "rooms": {
+            "bed": 2,
+            "bathroom": 2,
+            "belcony": 1
+        },
+        "photo": ""
+    },
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 9000,
+        "space": 1000,
+        "rooms": {
+            "bed": 3,
+            "bathroom": 2,
+            "belcony": 1
+        },
+        "photo": ""
+    },
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 7000,
+        "space": 900,
+        "rooms": {
+            "bed": 3,
+            "bathroom": 2,
+            "belcony": 1
+        },
+        "photo": ""
+    },
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 7000,
+        "space": 900,
+        "rooms": {
+            "bed": 3,
+            "bathroom": 2,
+            "belcony": 1
+        },
+        "photo": ""
+    },
+    {
+        "address": "Sontosh, Tangail",
+        "owner": "Kuddus Ali",
+        "Price": 7000,
+        "space": 900,
+        "rooms": {
+            "bed": 3,
+            "bathroom": 2,
+            "belcony": 1
+        },
+        "photo": ""
+    }
+]

@@ -110,18 +110,14 @@ const Header = () => {
 
                         </ul>
                         {/* ------------- */}
-                        <div className="dropdown dropdown-end my-auto">
-                            <label tabIndex={0} className="btn m-1 btn-square">Click</label>
+                        <div className="dropdown dropdown-end dropdown-hover my-auto">
+                            <label tabIndex={0} className="btn m-1 btn-square bg-[url('https://i.pravatar.cc/48?img=26')]"></label>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><a>Your Profile</a></li>
-                                <li><a>Logout</a></li>
+                                <li className='hover-bordered'><a>Your Profile</a></li>
+                                <li className='hover-bordered'><a>Logout</a></li>
                             </ul>
                         </div>
                         {/* ------------------ */}
-
-
-
-                        {/*        <!-- End Avatar --> */}
 
                     </nav>
                 </div>
