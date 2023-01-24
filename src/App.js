@@ -6,7 +6,6 @@ import Home from './pages/Home/Home';
 import AllHouse from './pages/Houses/AllHouse';
 import Login from './pages/Login/Login';
 import Buyer from './pages/SignUp/Buyer';
-import Seller from './pages/SignUp/Seller';
 import Error from './Shared/Error';
 
 function App() {
@@ -32,13 +31,10 @@ function App() {
           element: <Login></Login>
         },
         {
-          path: '/signup/buyer',
+          path: '/signup',
           element: <Buyer></Buyer>
         },
-        {
-          path: '/signup/seller',
-          element: <Seller></Seller>
-        },
+
       ]
     },
     {

@@ -94,21 +94,9 @@ const Header = () => {
                                 </button></Link>
                             </li>
                             <li className='flex items-center mr-2'>
-                                <div className="inline-flex items-center divide-x rounded bg-white-800 text-black divide-black dropdown h-12">
-                                    <div className="px-8 mb-4">
-                                        <button type="button" className='' >SIGNUP</button>
-                                        <button type="button" title="Toggle dropdown" className="p-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                            <div class="dropdown-content">
-                                                <Link to='/signup/buyer'>Buyer</Link>
-                                                <Link to='/signup/seller'>Seller</Link>
-                                            </div>
-                                        </button>
-                                    </div>
-
-                                </div>
+                                <Link to='/signup'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
+                                    <span className='font-bold'>SIGNUP</span>
+                                </button></Link>
                             </li>
 
                         </ul>
@@ -122,8 +110,9 @@ const Header = () => {
                             {
                                 user ?
                                     <div className="dropdown dropdown-end dropdown-hover my-auto ml-1">
-                                        <label tabIndex={0} className="btn m-1 btn-square bg-[url('https://i.pravatar.cc/48?img=26')]"></label>
+                                        <label tabIndex={0} className="btn m-1 btn-circle bg-[url('https://i.ibb.co/KDzX1N8/zahid-pic.png')] bg-no-repeat bg-cover"></label>
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                            <li className='hover-bordered'><a>Dashboard</a></li>
                                             <li className='hover-bordered'><a>Your Profile</a></li>
                                             <li className='hover-bordered'><a type='button' onClick={logOut}>Logout</a></li>
                                         </ul>

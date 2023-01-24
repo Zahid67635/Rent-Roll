@@ -1,11 +1,13 @@
 import Lottie from 'lottie-react';
 import React, { useState } from 'react';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import anim from '../../assets/login.json'
 import { AuthContext } from '../../Contexts/ContextProvider';
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
     const [signInError, setSignInError] = useState('');
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         const form = e.target;
         const email = form.email.value;
@@ -17,6 +19,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
+                navigate('/')
             })
             .catch(er => {
                 console.log(er)
