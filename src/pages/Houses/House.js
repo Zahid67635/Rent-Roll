@@ -1,7 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import PrimaryButton from '../../Components/PrimaryButton';
+import { AuthContext } from '../../Contexts/ContextProvider';
 
 const House = ({ info }) => {
     const { owner, price, space, photo, rooms, address, ownerPhoto } = info
+    const { loadingState } = useContext(AuthContext)
     return (
         <div className=''>
             <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300">
@@ -51,7 +56,7 @@ const House = ({ info }) => {
                 {/*  <!-- Action icon buttons --> */}
                 <div className="flex justify-between items-center gap-2 p-2 pt-0 mx-4 mb-2">
                     <div>
-                        <button className="btn">Details</button>
+                        <Link to='/homeDetails'><PrimaryButton classes='px-8 py-1 rounded'>Details</PrimaryButton></Link>
                     </div>
                     <div>
                         <button className="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:bg-zinc-100 hover:text-zinc-600 focus:bg-zinc-200 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-zinc-300 disabled:shadow-none disabled:hover:bg-transparent">

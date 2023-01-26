@@ -88,16 +88,18 @@ const Header = () => {
                                     <span>About</span>
                                 </Link>
                             </li>
-                            <li className="flex items-center mr-3">
-                                <Link to='/login'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
-                                    <span className='font-bold'>SIGNIN</span>
-                                </button></Link>
-                            </li>
-                            <li className='flex items-center mr-2'>
-                                <Link to='/signup'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
-                                    <span className='font-bold'>SIGNUP</span>
-                                </button></Link>
-                            </li>
+                            {
+                                user ? '' : <><li className="flex items-center mr-3">
+                                    <Link to='/login'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
+                                        <span className='font-bold'>SIGNIN</span>
+                                    </button></Link>
+                                </li>
+                                    <li className='flex items-center mr-2'>
+                                        <Link to='/signup'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
+                                            <span className='font-bold'>SIGNUP</span>
+                                        </button></Link>
+                                    </li></>
+                            }
 
                         </ul>
                         {/* ------------- */}

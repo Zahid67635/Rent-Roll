@@ -4,6 +4,7 @@ import Main from './layout/Main';
 import About from './pages/About/About';
 import Home from './pages/Home/Home';
 import AllHouse from './pages/Houses/AllHouse';
+import Details from './pages/Houses/Details';
 import Login from './pages/Login/Login';
 import Buyer from './pages/SignUp/Buyer';
 import Error from './Shared/Error';
@@ -21,6 +22,10 @@ function App() {
         {
           path: '/allproperties',
           element: <AllHouse></AllHouse>
+        },
+        {
+          path: '/homeDetails',
+          element: <Details></Details>
         },
         {
           path: '/about',
