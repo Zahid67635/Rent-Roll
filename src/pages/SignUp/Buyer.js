@@ -1,18 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/ContextProvider';
 
 const Buyer = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [data, setData] = useState("");
     const { createUser, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     const [signUpError, setSignUpError] = useState('');
     const handleSignUp = (data) => {
         setSignUpError('');
-        console.log(data);
         const name = data.username
         const email = data.email
+        const contact = data.contact
         const password = data.password
+        const usertype = data.usertype
+        const bio = data.bio
         const image = data.userimage[0]
         const apiKey = process.env.REACT_APP_imgBB_Key
         const url = `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`
@@ -24,28 +29,60 @@ const Buyer = () => {
         })
             .then(res => res.json())
             .then(imgData => {
-                console.log(imgData);
+                const imgURL = imgData.data.display_url
+                createUserProfile(imgURL)
+
             })
             .catch(er => console.log(er))
-        createUser(email, password)
-            .then(res => {
-                const user = res.user;
-                const userInfo = {
-                    displayName: name,
-                }
 
-                updateUser(userInfo)
-                    .then(() => {
-                        console.log(userInfo);
-                    })
-                    .catch(err => console.log(err));
+        const createUserProfile = (imgURL) => {
+            createUser(email, password)
+                .then(res => {
+                    const user = res.user;
+                    const updateInfo = {
+                        displayName: name,
+                        photoURL: imgURL
+                    }
 
+                    updateUser(updateInfo)
+                        .then(() => {
+                            navigate(from, { replace: true })
+                        })
+                        .catch(err => console.log(err));
+
+                    const userInfo = {
+                        name,
+                        photoURL: imgURL,
+                        contact,
+                        email,
+                        usertype,
+                        bio
+                    }
+
+                    saveUser(userInfo)
+                    data.target.reset()
+
+                })
+                .catch(er => {
+                    console.log(er)
+                    setSignUpError(er.message)
+                })
+        }
+
+    }
+    const saveUser = (userInfo) => {
+        const user = { ...userInfo };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
             })
-            .catch(er => {
-                console.log(er)
-                setSignUpError(er.message)
-            })
-
     }
     return (
         <div className='w-3/4 mx-auto mt-6 mb-16'>
@@ -134,7 +171,7 @@ const Buyer = () => {
 
                                     className="peer relative h-10 w-full appearance-none rounded border border-slate-200 bg-white px-4 text-sm text-slate-500 outline-none transition-all autofill:bg-white focus:border-zinc-500 focus-visible:outline-none focus:focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
                                 >
-                                    <option value="" disabled selected></option>
+                                    <option value="" disabled selected>Are You Buyer Or Owner?</option>
                                     <option value="buyer">Buyer</option>
                                     <option value="owner">Owner</option>
                                 </select>
@@ -165,6 +202,9 @@ const Buyer = () => {
                                 <div className="flex items-center space-x-2">
                                     <button type="submit" className="px-4 py-2 border rounded-md border-gray-800">Create Account</button>
                                 </div>
+                                {
+                                    signUpError ? <p className='text-red-600'>{signUpError}</p> : ''
+                                }
                             </div>
                         </div>
                     </fieldset>

@@ -1,12 +1,15 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/ContextProvider';
 
 const Search = () => {
+    const { user } = useContext(AuthContext)
     return (
         <div className="hero h-[32rem] mb-20" style={{ backgroundImage: `url("https://i.ibb.co/nfWtVVw/exterior.jpg")`, backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="min-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Hello XYZ,</h1>
+                    <h1 className="mb-5 text-5xl font-bold">Hello {user?.displayName}</h1>
                     <p className="mb-5">WE KNOW WHAT YOU WANT! WE WILL GIVE YOU THE BEST SEARCH....</p>
                     <div className='md:flex ml-4 text-black'>
                         <div className="form-control ml-2">

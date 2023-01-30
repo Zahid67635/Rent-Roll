@@ -8,7 +8,7 @@ import Pagination from './Pagination.js';
 const AllHouse = () => {
     const [house, setHouse] = useState([])
     useEffect(() => {
-        fetch('data.json')
+        fetch('http://localhost:5000/allProperties')
             .then(res => res.json())
             .then(data => setHouse(data))
     }, [])

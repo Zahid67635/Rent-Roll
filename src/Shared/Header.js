@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/ContextProvider';
@@ -106,13 +107,13 @@ const Header = () => {
                         <div className='flex items-center'>
                             <div >
                                 {
-                                    user ? <p>Hello, {user?.displayName}</p> : ''
+                                    user ? <p>Welcome, {user?.displayName}</p> : ''
                                 }
                             </div>
                             {
                                 user ?
                                     <div className="dropdown dropdown-end dropdown-hover my-auto ml-1">
-                                        <label tabIndex={0} className="btn m-1 btn-circle bg-[url('https://i.ibb.co/KDzX1N8/zahid-pic.png')] bg-no-repeat bg-cover"></label>
+                                        <img src={user?.photoURL} className='btn m-1 btn-circle border-solid border-2 border-sky-500' alt="" />
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                             <li className='hover-bordered'><a>Dashboard</a></li>
                                             <li className='hover-bordered'><a>Your Profile</a></li>
