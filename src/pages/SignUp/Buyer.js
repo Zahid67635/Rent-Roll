@@ -73,7 +73,7 @@ const Buyer = () => {
     const saveUser = (userInfo) => {
         const user = { ...userInfo };
         fetch('http://localhost:5000/users', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },

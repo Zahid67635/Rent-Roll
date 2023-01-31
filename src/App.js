@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Main from './layout/Main';
 import About from './pages/About/About';
+import AddProperty from './pages/AddProperty/AddProperty';
 import Home from './pages/Home/Home';
 import AllHouse from './pages/Houses/AllHouse';
 import Details from './pages/Houses/Details';
@@ -26,6 +27,10 @@ function App() {
         {
           path: '/homeDetails',
           element: <Details></Details>
+        },
+        {
+          path: '/addProperty',
+          element: <AddProperty></AddProperty>
         },
         {
           path: '/about',
