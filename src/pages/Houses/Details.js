@@ -1,9 +1,17 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
 import Carousel from './Carousel';
 import Reviews from './Reviews';
 
 const Details = () => {
+    const { owner, Price, space, photo, rooms, address, ownerPhoto } = useLoaderData()
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
+    const totalPrice = Price + 950 + 1000
     return (
         <div className='mb-10'>
             <Carousel></Carousel>
@@ -12,12 +20,13 @@ const Details = () => {
                     <h1 className='text-3xl text-green-500 mb-4 font-semibold'>House Details</h1>
                     <div className='flex justify-between'>
                         <div className='p-1'>
-                            <h3 className='text-xl'>Location: Dhaka</h3>
-                            <small>2 bedrooms, 2 washrooms, 2 belcony</small>
+                            <h3 className='text-xl'>Location: {address}</h3>
+                            <small>{rooms.bed} Bedrooms, {rooms.bathroom} Washrooms, {rooms.belcony} Balcony</small> <br /> <br />
+                            <h4 className='font-bold text-sm'>Total Space-{space} Sq-ft</h4>
                         </div>
                         <div className='md:mr-20 mr-1'>
                             <img className='w-14 h-14 rounded-full mx-auto' src="https://i.ibb.co/KDzX1N8/zahid-pic.png" alt="" />
-                            <h2 className='font-semibold text-center'>Zahid Hasan</h2>
+                            <h2 className='font-semibold text-center'>{owner}</h2>
                         </div>
                     </div>
                     <div className="divider md:mr-20"></div>
@@ -59,7 +68,7 @@ const Details = () => {
                     {/* -------Features end----- */}
                     <section>
                         <h1 className='text-2xl font-semibold mb-5 p-2'>Reviews:</h1>
-                        <div className='flex'>
+                        <div className='flex gap-2'>
 
                             <Reviews></Reviews>
                             <Reviews></Reviews>
@@ -70,37 +79,33 @@ const Details = () => {
                 <div className='mt-10 md:mt-40'>
                     <div className='border-solid border-2 rounded-xl p-4 w-full shadow-lg'>
                         <h1 className='text-gray-900 text-3xl title-font font-medium mb-2'>
-                            $35/ <span className='font-thin'>month</span>
+                            ৳{Price}/ <span className='font-thin'>month</span>
                         </h1>
                         <div className='flex gap-1 mb-2'>
                             <p>Ratings</p>{' '}
                             <span>4.8 (10 reviews)</span>
                         </div>
+                        <p>Date</p>
+                        <div className='flex justify-center items-center p-2 border mt-1 mb-2'>
+                            <div>{currentDate}</div>
 
-                        <p>Dates</p>
-                        <div className='flex justify-between items-center p-2 border mt-1 mb-2'>
-                            <div>13/11/2022</div>
-                            <div>
-                                <p>--</p>
-                            </div>
-                            <div>15/11/2022</div>
                         </div>
 
                         <div className='flex border-t border-gray-200 py-2'>
-                            <span className='text-gray-500'>$34 x  nights</span>
-                            <span className='ml-auto text-gray-900'>$</span>
+                            <span className='text-gray-500'>Rent Cost</span>
+                            <span className='ml-auto text-gray-900'>৳{Price}</span>
                         </div>
                         <div className='flex border-t border-gray-200 py-2'>
-                            <span className='text-gray-500'>Cleaning Fee</span>
-                            <span className='ml-auto text-gray-900'>$10</span>
+                            <span className='text-gray-500'>Gas Bill</span>
+                            <span className='ml-auto text-gray-900'>৳950</span>
                         </div>
                         <div className='flex border-t border-gray-200 py-2'>
-                            <span className='text-gray-500'>Service Fee</span>
-                            <span className='ml-auto text-gray-900'>$21</span>
+                            <span className='text-gray-500'>Security and Others</span>
+                            <span className='ml-auto text-gray-900'>৳1000</span>
                         </div>
                         <div className='flex border-t border-b mb-6 border-gray-200 py-2'>
                             <span className='text-gray-900 font-bold'>Total</span>
-                            <span className='ml-auto text-gray-900'>$</span>
+                            <span className='ml-auto text-gray-900'>৳{totalPrice}</span>
                         </div>
                         <div className='mt-6 mb-2'>
                             <PrimaryButton

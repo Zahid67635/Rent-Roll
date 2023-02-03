@@ -9,45 +9,45 @@ const AddProperty = () => {
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Location</span>
+                                    <span className="label-text font-semibold">Location</span>
                                 </label>
                                 <input type="text" placeholder="eg: Dhaka" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Space Of Your House</span>
+                                    <span className="label-text font-semibold">Space Of Your House</span>
                                 </label>
                                 <input type="text" placeholder="eg: 900Sq-ft" className="input input-bordered" />
                             </div>
                             <div className="flex gap-3">
                                 <div className="">
                                     <label className="label">
-                                        <span className="label-text">Bed-Room</span>
+                                        <span className="label-text font-semibold">Bed-Room</span>
                                     </label>
                                     <input type="number" placeholder="" className="input input-bordered w-24" />
                                 </div>
                                 <div className="">
                                     <label className="label">
-                                        <span className="label-text">Bath-Room</span>
+                                        <span className="label-text font-semibold">Bath-Room</span>
                                     </label>
                                     <input type="number" placeholder="" className="input input-bordered w-24" />
                                 </div>
                                 <div className="">
                                     <label className="label">
-                                        <span className="label-text">Balcony</span>
+                                        <span className="label-text font-semibold">Balcony</span>
                                     </label>
                                     <input type="number" placeholder="" className="input input-bordered w-24" />
                                 </div>
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Price</span>
+                                    <span className="label-text font-semibold">Price</span>
                                 </label>
                                 <input type="number" placeholder="eg: 7000" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Details About House</span>
+                                    <span className="label-text font-semibold">Details About House</span>
                                 </label>
                                 <textarea placeholder="Type house details" className="textarea textarea-bordered textarea-md w-full " ></textarea>
                             </div>

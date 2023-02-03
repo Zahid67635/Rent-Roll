@@ -63,7 +63,7 @@ const Login = () => {
                     <div>
                         {signInError ? <p className='text-red-500'>{signInError}</p> : ''}
                     </div>
-                    <button type='submit' className="block w-full p-3 text-center rounded-md text-gray-50 bg-violet-500">Sign in</button>
+                    <button type='submit' className="btn btn-primary btn-outline w-full ">Sign in</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>

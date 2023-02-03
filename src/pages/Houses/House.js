@@ -5,7 +5,7 @@ import PrimaryButton from '../../Components/PrimaryButton';
 import { AuthContext } from '../../Contexts/ContextProvider';
 
 const House = ({ info }) => {
-    const { owner, price, space, photo, rooms, address, ownerPhoto } = info
+    const { owner, Price, space, photo, rooms, address, ownerPhoto, _id } = info
     const { loadingState } = useContext(AuthContext)
     return (
         <div className=''>
@@ -28,7 +28,7 @@ const House = ({ info }) => {
                         </a>
                         <div>
                             <h3 className="text-xl font-medium text-slate-700">
-                                Mary Jay
+                                {owner}
                             </h3>
                             <p className="text-sm text-slate-600"> jun 3 2023</p>
                         </div>
@@ -46,17 +46,17 @@ const House = ({ info }) => {
                 <div className="p-6 font-bold">
                     <div className=''>
                         <div className='flex justify-between mb-3'>
-                            <p>Space: 1200 sq-ft</p>
-                            <p>Location: Dhaka</p>
+                            <p>Space: {space} sq-ft</p>
+                            <p>Location: {address}</p>
                         </div>
-                        <p>Bedroom: 3 , Bathroom: 2 , Belcony: 2</p>
+                        <p>Bedroom: {rooms.bed} , Bathroom: {rooms.bathroom} , Belcony: {rooms.belcony}</p>
                     </div>
-                    <h1 className='text-xl'>Price: </h1>
+                    <h1 className='text-xl'>Price: {Price}<span className='text-2xl font-bold'>৳</span></h1>
                 </div>
                 {/*  <!-- Action icon buttons --> */}
                 <div className="flex justify-between items-center gap-2 p-2 pt-0 mx-4 mb-2">
                     <div>
-                        <Link to='/homeDetails'><PrimaryButton classes='px-8 py-1 rounded'>Details</PrimaryButton></Link>
+                        <Link to={`/homeDetails/${_id}`}><PrimaryButton classes='px-8 py-1 rounded'>Details</PrimaryButton></Link>
                     </div>
                     <div>
                         <button className="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:bg-zinc-100 hover:text-zinc-600 focus:bg-zinc-200 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-zinc-300 disabled:shadow-none disabled:hover:bg-transparent">

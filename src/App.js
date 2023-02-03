@@ -25,8 +25,9 @@ function App() {
           element: <AllHouse></AllHouse>
         },
         {
-          path: '/homeDetails',
-          element: <Details></Details>
+          path: '/homeDetails/:id',
+          element: <Details></Details>,
+          loader: ({ params }) => fetch(`http://localhost:5000/allProperties/${params.id}`)
         },
         {
           path: '/addProperty',
