@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
 import { AuthContext } from '../../Contexts/ContextProvider';
-
+import { FaLandmark, FaLocationArrow } from "react-icons/fa";
 const House = ({ info }) => {
     const { owner, Price, space, photo, rooms, address, ownerPhoto, _id } = info
     const { loadingState } = useContext(AuthContext)
@@ -27,7 +27,7 @@ const House = ({ info }) => {
                             />
                         </a>
                         <div>
-                            <h3 className="text-xl font-medium text-slate-700">
+                            <h3 className="text-md font-medium text-slate-700">
                                 {owner}
                             </h3>
                             <p className="text-sm text-slate-600"> jun 3 2023</p>
@@ -46,12 +46,19 @@ const House = ({ info }) => {
                 <div className="p-6 font-bold">
                     <div className=''>
                         <div className='flex justify-between mb-3'>
-                            <p>Space: {space} sq-ft</p>
-                            <p>Location: {address}</p>
+                            <div className='flex gap-1 items-center'>
+                                <FaLandmark></FaLandmark>
+                                <p> {space} sq-ft</p>
+                            </div>
+                            <div className='flex gap-1 items-center'>
+                                <FaLocationArrow />
+                                <p><small>{address}</small></p>
+                            </div>
+
                         </div>
                         <p>Bedroom: {rooms.bed} , Bathroom: {rooms.bathroom} , Belcony: {rooms.belcony}</p>
                     </div>
-                    <h1 className='text-xl'>Price: {Price}<span className='text-2xl font-bold'>৳</span></h1>
+                    <h1 className='text-xl'>Price: <span className='text-xl font-extrabold'>৳</span>{Price}</h1>
                 </div>
                 {/*  <!-- Action icon buttons --> */}
                 <div className="flex justify-between items-center gap-2 p-2 pt-0 mx-4 mb-2">

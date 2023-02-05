@@ -1,8 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import DashBoardLayout from './layout/DashBoardLayout';
 import Main from './layout/Main';
 import About from './pages/About/About';
 import AddProperty from './pages/AddProperty/AddProperty';
+import DashBoard from './pages/DashBoard/DashBoard';
+import Table from './pages/DashBoard/Table';
 import Home from './pages/Home/Home';
 import AllHouse from './pages/Houses/AllHouse';
 import Details from './pages/Houses/Details';
@@ -46,6 +49,16 @@ function App() {
           element: <Buyer></Buyer>
         },
 
+      ]
+    },
+    {
+      path: '/dashboard',
+      element: <DashBoardLayout></DashBoardLayout>,
+      children: [
+        {
+          path: '/dashboard/user-requests',
+          element: <Table></Table>
+        }
       ]
     },
     {

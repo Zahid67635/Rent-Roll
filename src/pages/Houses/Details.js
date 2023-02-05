@@ -5,7 +5,7 @@ import Carousel from './Carousel';
 import Reviews from './Reviews';
 
 const Details = () => {
-    const { owner, Price, space, photo, rooms, address, ownerPhoto } = useLoaderData()
+    const { owner, Price, space, photo, rooms, address, ownerPhoto, details } = useLoaderData()
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
@@ -65,6 +65,12 @@ const Details = () => {
                         </div>
                     </section>
                     <div className="divider"></div>
+                    <section>
+                        <h1 className='font-semibold text-2xl text-green-500'>About:</h1>
+                        <div>
+                            <p>{details}</p>
+                        </div>
+                    </section>
                     {/* -------Features end----- */}
                     <section>
                         <h1 className='text-2xl font-semibold mb-5 p-2'>Reviews:</h1>

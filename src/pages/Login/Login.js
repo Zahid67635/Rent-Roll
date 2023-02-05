@@ -47,7 +47,7 @@ const Login = () => {
                 <Lottie animationData={anim} loop={true}></Lottie>
             </div>
             <div className="mx-auto mb-2 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-xl">
-                <h1 className="text-2xl font-bold text-center">Login</h1>
+                <h1 className="text-3xl font-semibold text-center">Login</h1>
                 <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
                         <label for="email" className="block text-gray-600">Email</label>
@@ -62,8 +62,8 @@ const Login = () => {
                     </div>
                     <div>
                         {signInError ? <p className='text-red-500'>{signInError}</p> : ''}
+                        <button type='submit' className="btn btn-primary btn-outline w-full ">Sign in</button>
                     </div>
-                    <button type='submit' className="btn btn-primary btn-outline w-full ">Sign in</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>

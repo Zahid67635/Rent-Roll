@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/ContextProvider';
@@ -75,7 +74,7 @@ const Header = () => {
                                     className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
 
                                 >
-                                    <span>Services</span>
+                                    <span>All Properties</span>
                                 </Link>
                             </li>
                             <li role="none" className="flex items-stretch">
@@ -124,11 +123,11 @@ const Header = () => {
                             {
                                 user ?
                                     <div className="dropdown dropdown-end dropdown-hover my-auto ml-1">
-                                        <img src={user?.photoURL} className='btn m-1 btn-circle border-solid border-2 border-sky-500' alt="" />
+                                        <img src={user?.photoURL} className='w-12 h-12 rounded-full bg-gray-500 border-solid border-2 border-sky-500' alt="" />
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                            <li className='hover-bordered'><a>Dashboard</a></li>
+                                            <li className='hover-bordered'><Link to='/dashboard'>Dashboard</Link></li>
                                             <li className='hover-bordered'><a>Your Profile</a></li>
-                                            <li className='hover-bordered'><a type='button' onClick={logOut}>Logout</a></li>
+                                            <li className='hover-bordered'><Link to='/' type='button' onClick={logOut}>Logout</Link></li>
                                         </ul>
                                     </div> :
                                     ''
@@ -138,7 +137,7 @@ const Header = () => {
 
                     </nav>
                 </div>
-            </header>
+            </header >
             {/*<!-- End Navbar with Avatar--> */}
         </>
     )

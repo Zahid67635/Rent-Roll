@@ -87,7 +87,7 @@ const AllHouse = () => {
                             </svg>
                         </div>
                     </div>
-                    <h1 className='text-xl font-semibold'>69 available house found:</h1>
+                    <h1 className='text-xl font-semibold'>{house?.length} available house found:</h1>
                 </div>
                 <div className='grid md:grid-cols-3 gap-7'>
                     {
