@@ -5,6 +5,7 @@ import Main from './layout/Main';
 import About from './pages/About/About';
 import AddProperty from './pages/AddProperty/AddProperty';
 import DashBoard from './pages/DashBoard/DashBoard';
+import SoldProperties from './pages/DashBoard/SoldProperties';
 import Table from './pages/DashBoard/Table';
 import Home from './pages/Home/Home';
 import AllHouse from './pages/Houses/AllHouse';
@@ -58,7 +59,11 @@ function App() {
         {
           path: '/dashboard/user-requests',
           element: <Table></Table>
-        }
+        },
+        {
+          path: '/dashboard/sold-properties',
+          element: <SoldProperties></SoldProperties>
+        },
       ]
     },
     {

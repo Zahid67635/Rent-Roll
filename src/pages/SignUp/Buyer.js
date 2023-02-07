@@ -60,7 +60,7 @@ const Buyer = () => {
                     }
 
                     saveUser(userInfo)
-                    data.target.reset()
+
 
                 })
                 .catch(er => {

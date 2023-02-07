@@ -1,17 +1,48 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
+import { AuthContext } from '../../Contexts/ContextProvider';
 import Carousel from './Carousel';
 import Reviews from './Reviews';
 
 const Details = () => {
+    const { user } = useContext(AuthContext)
     const { owner, Price, space, photo, rooms, address, ownerPhoto, details } = useLoaderData()
+    const [data, setData] = useState({})
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}-${month}-${year}`;
     const totalPrice = Price + 950 + 1000
+    const email = user?.email
+    const navigate = useNavigate()
+    const houseInfo = {
+        owner, Price, space, photo, rooms, address, ownerPhoto, details, email
+    }
+    useEffect(() => {
+        fetch(`http://localhost:5000/bookings?owner=${owner}`)
+            .then(res => res.json())
+            .then(data => setData(data))
+    }, [owner])
+    const handleConfirm = () => {
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(houseInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/')
+                toast.success('Successfully Booked!');
+
+            })
+            .catch(er => console.log(er))
+    }
     return (
         <div className='mb-10'>
             <Carousel></Carousel>
@@ -114,16 +145,43 @@ const Details = () => {
                             <span className='ml-auto text-gray-900'>৳{totalPrice}</span>
                         </div>
                         <div className='mt-6 mb-2'>
-                            <PrimaryButton
-                                type='submit'
-                                classes='w-full px-4 py-2 tracking-wide transition-colors duration-300 transform rounded-md'
-                            >
-                                Confirm
-                            </PrimaryButton>
+                            {data.owner === owner ? <p className='font-semibold text-center'>Already Booked!!</p> : <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
+
                         </div>
                         <p className='text-center text-gray-400 mb-6'>
                             You won't be charged yet!
                         </p>
+                    </div>
+                </div>
+            </div>
+            {/* {modal && <><div className="modal" id="my-modal-2">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Are You Sure About Your Confirmation!</h3>
+                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <div className="modal-action">
+                        <PrimaryButton classes="px-2 rounded-md"
+                            handler={handleConfirm}
+                        >Confirm
+                        </PrimaryButton>
+                        <button onClick={() => setModal(false)} className="btn btn-outline">No</button>
+                    </div>
+                </div>
+            </div></>} */}
+
+
+            {/* Put this part before </body> tag */}
+            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
+                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 className="font-bold text-lg">Are You Sure About Your Confirmation!</h3>
+                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <div className="modal-action">
+                        <PrimaryButton classes="px-2 rounded-md"
+                            handler={handleConfirm}
+                        >Confirm
+                        </PrimaryButton>
+                        <label htmlFor="my-modal-3" className="btn btn-sm">No</label>
                     </div>
                 </div>
             </div>
