@@ -4,6 +4,7 @@ import DashBoardLayout from './layout/DashBoardLayout';
 import Main from './layout/Main';
 import About from './pages/About/About';
 import AddProperty from './pages/AddProperty/AddProperty';
+import BookedProperties from './pages/DashBoard/Buyer/BookedProperties';
 import DashBoard from './pages/DashBoard/DashBoard';
 import SoldProperties from './pages/DashBoard/SoldProperties';
 import Table from './pages/DashBoard/Table';
@@ -63,6 +64,10 @@ function App() {
         {
           path: '/dashboard/sold-properties',
           element: <SoldProperties></SoldProperties>
+        },
+        {
+          path: '/dashboard/booked-properties',
+          element: <BookedProperties></BookedProperties>
         },
       ]
     },

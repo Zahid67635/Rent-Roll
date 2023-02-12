@@ -8,7 +8,7 @@ import Reviews from './Reviews';
 
 const Details = () => {
     const { user } = useContext(AuthContext)
-    const { owner, Price, space, photo, rooms, address, ownerPhoto, details } = useLoaderData()
+    const { owner, Price, space, photos, rooms, address, ownerPhoto, details } = useLoaderData()
     const [data, setData] = useState({})
     const date = new Date();
     let day = date.getDate();
@@ -19,7 +19,7 @@ const Details = () => {
     const email = user?.email
     const navigate = useNavigate()
     const houseInfo = {
-        owner, Price, space, photo, rooms, address, ownerPhoto, details, email
+        owner, Price, space, photos, rooms, address, ownerPhoto, details, email
     }
     useEffect(() => {
         fetch(`http://localhost:5000/bookings?owner=${owner}`)
@@ -45,14 +45,14 @@ const Details = () => {
     }
     return (
         <div className='mb-10'>
-            <Carousel></Carousel>
+            <Carousel photos={photos}></Carousel>
             <div className='md:grid grid-cols-3 md:mx-16 gap-5 mt-10'>
                 <div className='col-span-2 p-6'>
                     <h1 className='text-3xl text-green-500 mb-4 font-semibold'>House Details</h1>
                     <div className='flex justify-between'>
                         <div className='p-1'>
                             <h3 className='text-xl'>Location: {address}</h3>
-                            <small>{rooms.bed} Bedrooms, {rooms.bathroom} Washrooms, {rooms.belcony} Balcony</small> <br /> <br />
+                            <small>{rooms?.bed} Bedrooms, {rooms?.bathroom} Washrooms, {rooms?.belcony} Balcony</small> <br /> <br />
                             <h4 className='font-bold text-sm'>Total Space-{space} Sq-ft</h4>
                         </div>
                         <div className='md:mr-20 mr-1'>
@@ -145,7 +145,7 @@ const Details = () => {
                             <span className='ml-auto text-gray-900'>৳{totalPrice}</span>
                         </div>
                         <div className='mt-6 mb-2'>
-                            {data.owner === owner ? <p className='font-semibold text-center'>Already Booked!!</p> : <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
+                            {data?.owner === owner ? <p className='font-semibold text-center'>Already Booked!!</p> : <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
 
                         </div>
                         <p className='text-center text-gray-400 mb-6'>
@@ -154,22 +154,7 @@ const Details = () => {
                     </div>
                 </div>
             </div>
-            {/* {modal && <><div className="modal" id="my-modal-2">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Are You Sure About Your Confirmation!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div className="modal-action">
-                        <PrimaryButton classes="px-2 rounded-md"
-                            handler={handleConfirm}
-                        >Confirm
-                        </PrimaryButton>
-                        <button onClick={() => setModal(false)} className="btn btn-outline">No</button>
-                    </div>
-                </div>
-            </div></>} */}
 
-
-            {/* Put this part before </body> tag */}
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
