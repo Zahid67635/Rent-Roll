@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
+import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../Contexts/ContextProvider';
 import Carousel from './Carousel';
 import Reviews from './Reviews';
@@ -24,7 +25,9 @@ const Details = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/bookings?owner=${owner}`)
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => {
+                setData(data)
+            })
     }, [owner])
     const handleConfirm = () => {
         fetch('http://localhost:5000/bookings', {
@@ -170,6 +173,7 @@ const Details = () => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

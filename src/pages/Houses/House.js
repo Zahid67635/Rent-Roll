@@ -1,12 +1,9 @@
 import React from 'react';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
-import { AuthContext } from '../../Contexts/ContextProvider';
 import { FaLandmark, FaLocationArrow } from "react-icons/fa";
 const House = ({ info }) => {
     const { owner, Price, space, photos, rooms, address, ownerPhoto, id } = info
-    const { loadingState } = useContext(AuthContext)
     return (
         <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300 transition ease-in-out delay-150 hover:-translate-y-3 duration-300 relative">
             <span className="absolute top-0 right-0 px-5 py-1 text-xs tracking-wider text-center uppercase whitespace-no-wrap origin-bottom-left transform rotate-45 -translate-y-full translate-x-1/3 bg-violet-600 text-white">New</span>

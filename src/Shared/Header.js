@@ -88,17 +88,19 @@ const Header = () => {
                                     <span>About</span>
                                 </Link>
                             </li>
-                            <li role="none" className="flex items-stretch">
-                                <Link to='/addProperty'
-                                    role="menuitem"
-                                    aria-haspopup="false"
-                                    tabIndex="0"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
-                                    href="javascript:void(0)"
-                                >
-                                    <span>Add Property</span>
-                                </Link>
-                            </li>
+                            {
+                                user ? <li role="none" className="flex items-stretch">
+                                    <Link to='/addProperty'
+                                        role="menuitem"
+                                        aria-haspopup="false"
+                                        tabIndex="0"
+                                        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
+                                        href="javascript:void(0)"
+                                    >
+                                        <span>Add Property</span>
+                                    </Link>
+                                </li> : ''
+                            }
                             {
                                 user ? '' : <><li className="flex items-center mr-3">
                                     <Link to='/login'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">

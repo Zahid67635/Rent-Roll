@@ -9,10 +9,12 @@ import DashBoard from './pages/DashBoard/DashBoard';
 import SoldProperties from './pages/DashBoard/SoldProperties';
 import Table from './pages/DashBoard/Table';
 import Home from './pages/Home/Home';
+import SearchResult from './pages/Home/SearchResult';
 import AllHouse from './pages/Houses/AllHouse';
 import Details from './pages/Houses/Details';
 import Login from './pages/Login/Login';
 import Buyer from './pages/SignUp/Buyer';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Error from './Shared/Error';
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
         },
         {
           path: '/homeDetails/:id',
-          element: <Details></Details>,
+          element: <PrivateRoute><Details></Details></PrivateRoute>,
           loader: ({ params }) => fetch(`http://localhost:5000/allProperties/${params.id}`)
         },
         {
