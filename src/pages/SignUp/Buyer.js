@@ -20,7 +20,7 @@ const Buyer = () => {
         const bio = data.bio
         const image = data.userimage[0]
         const apiKey = process.env.REACT_APP_imgBB_Key
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${apiKey}`
         const formData = new FormData()
         formData.append('image', image)
         fetch(url, {
@@ -61,7 +61,6 @@ const Buyer = () => {
 
                     saveUser(userInfo)
 
-
                 })
                 .catch(er => {
                     console.log(er)
@@ -72,7 +71,7 @@ const Buyer = () => {
     }
     const saveUser = (userInfo) => {
         const user = { ...userInfo };
-        fetch('http://localhost:5000/users', {
+        fetch(`http://localhost:5000/users/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -5,6 +5,7 @@ import Main from './layout/Main';
 import About from './pages/About/About';
 import AddProperty from './pages/AddProperty/AddProperty';
 import BookedProperties from './pages/DashBoard/Buyer/BookedProperties';
+import Host from './pages/DashBoard/Buyer/Host';
 import DashBoard from './pages/DashBoard/DashBoard';
 import SoldProperties from './pages/DashBoard/SoldProperties';
 import Table from './pages/DashBoard/Table';
@@ -70,6 +71,10 @@ function App() {
         {
           path: '/dashboard/booked-properties',
           element: <BookedProperties></BookedProperties>
+        },
+        {
+          path: '/dashboard/host-request',
+          element: <Host></Host>
         },
       ]
     },
