@@ -24,7 +24,6 @@ const Search = () => {
             .catch(er => console.log(er))
     }
 
-
     return (
         <div>
             <div className="hero h-[32rem] mb-20" style={{ backgroundImage: `url("https://i.ibb.co/nfWtVVw/exterior.jpg")`, backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
@@ -35,7 +34,7 @@ const Search = () => {
                             className="text-5xl font-bold"
                             active // <boolean>
                             textRef={user ? `Hello ${user?.displayName}` : 'Hello User'} // <string>
-                            writeSpeed={150}
+                            writeSpeed={100}
                             deleteSpeed={150}
                             delayToWrite={1800}
                             delayToDelete={2000}

@@ -1,7 +1,6 @@
 import React from 'react';
 import Acordian from './Acordian';
 import Search from './Search';
-import SearchResult from './SearchResult';
 
 const Home = () => {
     return (

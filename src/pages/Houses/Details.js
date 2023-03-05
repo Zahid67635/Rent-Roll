@@ -9,7 +9,7 @@ import Reviews from './Reviews';
 
 const Details = () => {
     const { user } = useContext(AuthContext)
-    const { owner, Price, space, photos, rooms, address, ownerPhoto, details } = useLoaderData()
+    const { owner, Price, space, photos, rooms, address, ownerPhoto, details, features } = useLoaderData()
     const [data, setData] = useState({})
     const date = new Date();
     let day = date.getDate();
@@ -66,6 +66,7 @@ const Details = () => {
                     <div className="divider md:mr-20"></div>
                     {/* ----------------Room feature--------- */}
                     <section className="text-gray-800">
+                        <h1 className='text-2xl font-semibold text-green-500 mb-3'>Available features :</h1>
                         <div className="container flex flex-col-reverse mx-auto lg:flex-row">
                             <div className="flex flex-col md:w-3/4 p-2text-black">
                                 <div className="flex space-x-2 sm:space-x-4">
@@ -73,8 +74,15 @@ const Details = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                     </svg>
                                     <div className="space-y-2">
-                                        <p className="text-lg font-medium leading-snug">Lorem ipsum dolor sit amet</p>
-                                        <p className="leading-snug">Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
+                                        <p className="text-lg font-medium leading-snug">{features?.CCTV}</p>
+                                    </div>
+                                </div>
+                                <div className="flex space-x-2 sm:space-x-4 my-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                    </svg>
+                                    <div className="space-y-2">
+                                        <p className="text-lg font-medium leading-snug">{features?.View}</p>
                                     </div>
                                 </div>
                                 <div className="flex space-x-2 sm:space-x-4">
@@ -82,17 +90,15 @@ const Details = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                     </svg>
                                     <div className="space-y-2">
-                                        <p className="text-lg font-medium leading-snug">Lorem ipsum dolor sit amet</p>
-                                        <p className="leading-snug">Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
+                                        <p className="text-lg font-medium leading-snug">{features?.Lift}</p>
                                     </div>
                                 </div>
-                                <div className="flex space-x-2 sm:space-x-4">
+                                <div className="flex space-x-2 sm:space-x-4 my-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                     </svg>
                                     <div className="space-y-2">
-                                        <p className="text-lg font-medium leading-snug">Lorem ipsum dolor sit amet</p>
-                                        <p className="leading-snug">Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
+                                        <p className="text-lg font-medium leading-snug">{features?.Gas}</p>
                                     </div>
                                 </div>
                             </div>
@@ -100,18 +106,38 @@ const Details = () => {
                     </section>
                     <div className="divider"></div>
                     <section>
-                        <h1 className='font-semibold text-2xl text-green-500'>About:</h1>
+                        <h1 className='font-semibold text-2xl text-green-500'>About :</h1>
                         <div>
                             <p>{details}</p>
                         </div>
                     </section>
                     {/* -------Features end----- */}
-                    <section>
-                        <h1 className='text-2xl font-semibold mb-5 p-2'>Reviews:</h1>
-                        <div className='flex gap-2'>
+                    <section className='mt-10'>
+                        <div className="relative flex">
+                            <textarea
+                                id="id-01"
+                                type="text"
+                                name="id-01"
+                                placeholder="Write your message"
+                                rows="3"
+                                className="relative w-3/4 px-4 py-1 text-xl placeholder-transparent transition-all border rounded outline-none peer border-lime-600 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-zinc-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+                            ></textarea>
+                            <label
+                                for="id-01"
+                                className="absolute left-2 -top-2 z-[1] px-2 text-md text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-md peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-zinc-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
+                            >
+                                Comment Your Review
+                            </label>
+                            <button className={`btn btn-success ml-2 md:px-6 hover:bg-green-500 ${user ? '' : 'btn-disabled'} text-white`}>Post</button>
+                        </div>
 
-                            <Reviews></Reviews>
-                            <Reviews></Reviews>
+                        <div className=''>
+                            <h1 className='text-2xl font-semibold text-green-500 mb-2 py-2'>Reviews :</h1>
+                            <div className='flex gap-2'>
+
+                                <Reviews></Reviews>
+                                <Reviews></Reviews>
+                            </div>
                         </div>
                     </section>
 

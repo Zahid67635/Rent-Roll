@@ -19,7 +19,13 @@
             "https://i.ibb.co/chhLNth/390509611.jpg"
         ],
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "101"
+        "id": "101",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     },
     {
         "Location": "Tangail",
@@ -41,7 +47,13 @@
             "https://i.ibb.co/mR2qf6V/7391c-image-17.jpg"
         ],
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "102"
+        "id": "102",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     },
     {
         "Location": "Tangail",
@@ -63,7 +75,13 @@
             "https://i.ibb.co/YjQRjs5/1d6c3-image-15.jpg"
         ],
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "103"
+        "id": "103",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     },
     {
         "Location": "Dhaka",
@@ -85,7 +103,13 @@
             "https://i.ibb.co/Hqx77cW/e1b88b21.jpg"
         ],
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "104"
+        "id": "104",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     },
     {
         "Location": "Dhaka",
@@ -107,7 +131,13 @@
             "https://i.ibb.co/ftvnTcc/50fa6-image-16.jpg"
         ],
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "105"
+        "id": "105",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     },
     {
         "Location": "Tangail",
@@ -129,7 +159,13 @@
             "https://i.ibb.co/Trdw4PQ/07698-image-10.jpg"
         ],
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "106"
+        "id": "106",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     },
     {
         "Location": "Tangail",
@@ -145,6 +181,12 @@
         "ownerPhoto": "",
         "photos": "",
         "details": "Tangail is the major city that originated from Mymensingh, in central Bangladesh. It is located in Dhaka Division. It lies on the bank of the Louhajang River, 83 kilometres north-west of Dhaka, the nation's capital. The house is a good choice for a small family. Environment is friendly here. Vehicles cost is satisfactory here.",
-        "id": "107"
+        "id": "107",
+        "features": {
+            "CC-TV": "24/7 CC TV Coverage",
+            "Lift": "Lift available",
+            "View": "Open Space",
+            "Gas": "Line Gas"
+        }
     }
 ]
