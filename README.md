@@ -1,5 +1,7 @@
-This is house renting platform where user can find available houses within their budget.
-Live-link : https://rent-roll-684d9.web.app/
+This is house renting platform where user can find available houses within their budget.   
+
+Live-link : https://rent-roll-684d9.web.app/    
+
 Features:
 * Search by location or Distict
 * Users can also be a host of their property
