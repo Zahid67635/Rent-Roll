@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
 import { FaLandmark, FaLocationArrow } from "react-icons/fa";
 const House = ({ info }) => {
-    const { owner, Price, space, photos, rooms, address, ownerPhoto, id } = info
+    const { owner, Price, space, photos, rooms, Location, ownerPhoto, id } = info
     return (
-        <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300 transition ease-in-out delay-150 hover:-translate-y-3 duration-300 relative">
+        <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300 transition ease-in-out delay-150 hover:-translate-y-3 duration-300 relative mb-3">
             <span className="absolute top-0 right-0 px-5 py-1 text-xs tracking-wider text-center uppercase whitespace-no-wrap origin-bottom-left transform rotate-45 -translate-y-full translate-x-1/3 bg-violet-600 text-white">New</span>
             {/*  <!-- Header--> */}
             <div className="p-4 bg-slate-200">
@@ -15,7 +15,7 @@ const House = ({ info }) => {
                         className="relative inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
                     >
                         <img
-                            src="https://i.pravatar.cc/48?img=26"
+                            src={ownerPhoto ? ownerPhoto : "https://i.pravatar.cc/48?img=26"}
                             alt="user name"
                             title="user name"
                             width="48"
@@ -49,11 +49,11 @@ const House = ({ info }) => {
                         </div>
                         <div className='flex gap-1 items-center'>
                             <FaLocationArrow />
-                            <p><small>{address}</small></p>
+                            <p><small>{Location}</small></p>
                         </div>
 
                     </div>
-                    <p>Bedroom: {rooms.bed} , Bathroom: {rooms.bathroom} , Belcony: {rooms.belcony}</p>
+                    <p>Bedroom: {rooms.bed} , Bathroom: {rooms.bathroom} , Balcony: {rooms.belcony}</p>
                 </div>
                 <h1 className='text-xl'>Price: <span className='text-xl font-extrabold'>৳</span>{Price}</h1>
             </div>

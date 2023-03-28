@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import PrimaryButton from '../../../Components/PrimaryButton';
 
 const HomeCard = ({ info }) => {
-    const { owner, Price, space, photo, rooms, address, ownerPhoto, id } = info
+    const { owner, Price, space, photos, rooms, address, ownerPhoto, id } = info
     return (
-        <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300 transition ease-in-out delay-150 hover:-translate-y-2 duration-300">
+        <div className="overflow-hidden rounded bg-white text-slate-500 shadow-lg shadow-slate-300 transition ease-in-out delay-150 hover:-translate-y-2 duration-300 md:p-0 p-2">
 
             {/*  <!-- Header--> */}
             <div className="p-4 bg-slate-200">
@@ -16,7 +16,7 @@ const HomeCard = ({ info }) => {
                         className="relative inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
                     >
                         <img
-                            src="https://i.pravatar.cc/48?img=26"
+                            src={ownerPhoto ? ownerPhoto : "https://i.pravatar.cc/48?img=26"}
                             alt="user name"
                             title="user name"
                             width="48"
@@ -35,7 +35,7 @@ const HomeCard = ({ info }) => {
             {/*  <!-- Image --> */}
             <figure>
                 <img
-                    src="https://i.ibb.co/nfWtVVw/exterior.jpg"
+                    src={photos[0]}
                     alt="card image"
                     className="aspect-video w-full"
                 />

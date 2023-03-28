@@ -35,12 +35,9 @@ function App() {
         {
           path: '/homeDetails/:id',
           element: <PrivateRoute><Details></Details></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/allProperties/${params.id}`)
+          loader: ({ params }) => fetch(`https://rent-roll-server.vercel.app/allProperties/${params.id}`)
         },
-        {
-          path: '/addProperty',
-          element: <AddProperty></AddProperty>
-        },
+
         {
           path: '/about',
           element: <About></About>
@@ -62,7 +59,7 @@ function App() {
       children: [
         {
           path: '/dashboard/user-requests',
-          element: <Table></Table>
+          element: <Table></Table>,
         },
         {
           path: '/dashboard/sold-properties',
@@ -75,6 +72,10 @@ function App() {
         {
           path: '/dashboard/host-request',
           element: <Host></Host>
+        },
+        {
+          path: '/dashboard/addProperty',
+          element: <AddProperty></AddProperty>
         },
       ]
     },

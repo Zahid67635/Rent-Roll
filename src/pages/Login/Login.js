@@ -1,8 +1,11 @@
+import { success } from 'daisyui/src/colors';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Lottie from 'lottie-react';
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { toast } from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import anim from '../../assets/login.json'
 import { AuthContext } from '../../Contexts/ContextProvider';
 const Login = () => {
@@ -24,6 +27,7 @@ const Login = () => {
                 console.log(user);
                 form.reset()
                 navigate(from, { replace: true })
+                toast.success('Logged in')
             })
             .catch(er => {
                 console.log(er)
@@ -37,6 +41,7 @@ const Login = () => {
                 const user = result.user
                 console.log(user);
                 navigate(from, { replace: true })
+                toast.success('Logged in')
             })
             .catch(er => console.log(er))
     }
@@ -44,7 +49,9 @@ const Login = () => {
     return (
         <div className='grid md:grid-cols-2 my-16'>
             <div className='w-3/4 mx-auto'>
+
                 <Lottie animationData={anim} loop={true}></Lottie>
+
             </div>
             <div className="mx-auto mb-2 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-xl">
                 <h1 className="text-3xl font-semibold text-center">Login</h1>
@@ -88,7 +95,7 @@ const Login = () => {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 text-gray-600">Don't have an account?
-                    <a rel="noopener noreferrer" href="#" className="underline text-gray-800">Sign up</a>
+                    <Link to='/signup' className="underline text-gray-800">Sign up</Link>
                 </p>
             </div>
         </div>

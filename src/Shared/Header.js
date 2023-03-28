@@ -16,7 +16,7 @@ const Header = () => {
                         role="navigation"
                     >
                         {/*      <!-- Brand logo --> */}
-                        <img src="logo192.png" className='p-3' alt="" />
+                        <Link to='/' className='w-24'><img src="https://i.ibb.co/fHPh2k2/logo192.png" className='w-full pt-3' alt="" /></Link>
                         {/*      <!-- Mobile trigger --> */}
                         <button
                             className={`relative order-10 block h-10 w-10 self-center lg:hidden
@@ -71,7 +71,7 @@ const Header = () => {
                                     aria-current="page"
                                     aria-haspopup="false"
                                     tabIndex="0"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
+                                    className="flex items-center gap-2 my-1 md:my-0 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
 
                                 >
                                     <span>All Properties</span>
@@ -82,32 +82,20 @@ const Header = () => {
                                     role="menuitem"
                                     aria-haspopup="false"
                                     tabIndex="0"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
+                                    className="flex items-center gap-2 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
                                     href="javascript:void(0)"
                                 >
                                     <span>About</span>
                                 </Link>
                             </li>
+
                             {
-                                user ? <li role="none" className="flex items-stretch">
-                                    <Link to='/addProperty'
-                                        role="menuitem"
-                                        aria-haspopup="false"
-                                        tabIndex="0"
-                                        className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-zinc-300 focus:bg-zinc-400 focus:outline-none focus-visible:outline-none lg:px-8"
-                                        href="javascript:void(0)"
-                                    >
-                                        <span>Add Property</span>
-                                    </Link>
-                                </li> : ''
-                            }
-                            {
-                                user ? '' : <><li className="flex items-center mr-3">
+                                user ? '' : <><li className="md:flex items-center md:mr-3 mb-1 md:mb-0">
                                     <Link to='/login'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
                                         <span className='font-bold'>SIGNIN</span>
                                     </button></Link>
                                 </li>
-                                    <li className='flex items-center mr-2'>
+                                    <li className='md:flex items-center md:mr-2'>
                                         <Link to='/signup'><button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-zinc-500 px-5 text-sm font-medium tracking-wide text-zinc-500 transition duration-300 hover:border-zinc-600 hover:text-zinc-600 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
                                             <span className='font-bold'>SIGNUP</span>
                                         </button></Link>
@@ -128,19 +116,16 @@ const Header = () => {
                                         <img src={user?.photoURL} className='w-12 h-12 rounded-full bg-gray-500 border-solid border-2 border-sky-500' alt="" />
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                             <li className='hover-bordered'><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className='hover-bordered'><a>Your Profile</a></li>
+                                            <li className='hover-bordered'><a>My Profile</a></li>
                                             <li className='hover-bordered'><Link to='/' type='button' onClick={logOut}>Logout</Link></li>
                                         </ul>
                                     </div> :
                                     ''
                             }
                         </div>
-                        {/* ------------------ */}
-
                     </nav>
                 </div>
             </header >
-            {/*<!-- End Navbar with Avatar--> */}
         </>
     )
 };

@@ -1,16 +1,17 @@
 import React from 'react';
 
-const Reviews = () => {
+const Reviews = ({ mess }) => {
+    const { name, img, comment } = mess
     return (
         <div>
-            <div className="container flex flex-col w-full max-w-md p-3 divide-y rounded-md divide-gray-300 bg-gray-50 text-gray-800">
+            <div className="container flex flex-col w-full max-w-md p-3 divide-y rounded-md divide-gray-300 bg-gray-100 text-gray-800 mb-2 md:mb-0">
                 <div className="flex justify-between p-4">
                     <div className="flex space-x-4">
                         <div>
-                            <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="object-cover w-12 h-12 rounded-full bg-gray-500" />
+                            <img src={img} alt="" className="object-cover w-12 h-12 rounded-full bg-gray-500" />
                         </div>
                         <div>
-                            <h4 className="font-bold">Leroy Jenkins</h4>
+                            <h4 className="font-bold">{name}</h4>
                             <span className="text-xs text-gray-600">2 days ago</span>
                         </div>
                     </div>
@@ -22,7 +23,7 @@ const Reviews = () => {
                     </div>
                 </div>
                 <div className="p-4 space-y-2 text-sm text-gray-600">
-                    <p>Vivamus sit amet turpis leo. Praesent varius eleifend elit, eu dictum lectus consequat vitae. Etiam ut dolor id justo fringilla finibus.</p>
+                    <p>{comment}</p>
 
                 </div>
             </div>

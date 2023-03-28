@@ -2,35 +2,43 @@ import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
-import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../Contexts/ContextProvider';
 import Carousel from './Carousel';
 import Reviews from './Reviews';
 
 const Details = () => {
     const { user } = useContext(AuthContext)
-    const { owner, Price, space, photos, rooms, address, ownerPhoto, details, features } = useLoaderData()
+    const { owner, Price, space, photos, rooms, address, ownerPhoto, details, features, id } = useLoaderData()
+    const location = address.charAt(0).toUpperCase() + address.slice(1).toLowerCase();
     const [data, setData] = useState({})
+    const [comments, setComments] = useState([])
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}-${month}-${year}`;
-    const totalPrice = Price + 950 + 1000
+    const totalPrice = parseInt(Price) + 950 + 1000
     const email = user?.email
     const navigate = useNavigate()
     const houseInfo = {
-        owner, Price, space, photos, rooms, address, ownerPhoto, details, email
+        owner, Price, space, photos, rooms, address, ownerPhoto, details, email, id
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?owner=${owner}`)
+        fetch(`https://rent-roll-server.vercel.app/bookings?id=${id}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)
             })
-    }, [owner])
+            .catch(er => console.log(er))
+        fetch(`https://rent-roll-server.vercel.app/comments/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setComments(data);
+            })
+            .catch(er => console.log(er))
+    }, [id])
     const handleConfirm = () => {
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://rent-roll-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,10 +47,37 @@ const Details = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 navigate('/')
                 toast.success('Successfully Booked!');
 
+            })
+            .catch(er => console.log(er))
+    }
+    const handleComment = (e) => {
+        e.preventDefault()
+        const comment = e.target.comment.value.trim()
+        const data = { comment, id, email: user?.email, img: user?.photoURL, name: user?.displayName }
+
+        fetch('https://rent-roll-server.vercel.app/comments', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                e.target.reset()
+                toast.success('Comment added!', {
+                    position: "bottom-left"
+                });
+                fetch(`https://rent-roll-server.vercel.app/comments/${id}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        setComments(data);
+                    })
+                    .catch(er => console.log(er))
             })
             .catch(er => console.log(er))
     }
@@ -54,12 +89,12 @@ const Details = () => {
                     <h1 className='text-3xl text-green-500 mb-4 font-semibold'>House Details</h1>
                     <div className='flex justify-between'>
                         <div className='p-1'>
-                            <h3 className='text-xl'>Location: {address}</h3>
+                            <h3 className='text-xl'>Location: {location}</h3>
                             <small>{rooms?.bed} Bedrooms, {rooms?.bathroom} Washrooms, {rooms?.belcony} Balcony</small> <br /> <br />
                             <h4 className='font-bold text-sm'>Total Space-{space} Sq-ft</h4>
                         </div>
                         <div className='md:mr-20 mr-1'>
-                            <img className='w-14 h-14 rounded-full mx-auto' src="https://i.ibb.co/KDzX1N8/zahid-pic.png" alt="" />
+                            <img className='w-14 h-14 rounded-full mx-auto' src={ownerPhoto ? ownerPhoto : "https://i.ibb.co/KDzX1N8/zahid-pic.png"} alt="" />
                             <h2 className='font-semibold text-center'>{owner}</h2>
                         </div>
                     </div>
@@ -112,37 +147,10 @@ const Details = () => {
                         </div>
                     </section>
                     {/* -------Features end----- */}
-                    <section className='mt-10'>
-                        <div className="relative flex">
-                            <textarea
-                                id="id-01"
-                                type="text"
-                                name="id-01"
-                                placeholder="Write your message"
-                                rows="3"
-                                className="relative w-3/4 px-4 py-1 text-xl placeholder-transparent transition-all border rounded outline-none peer border-lime-600 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-zinc-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-                            ></textarea>
-                            <label
-                                for="id-01"
-                                className="absolute left-2 -top-2 z-[1] px-2 text-md text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-md peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-zinc-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-                            >
-                                Comment Your Review
-                            </label>
-                            <button className={`btn btn-success ml-2 md:px-6 hover:bg-green-500 ${user ? '' : 'btn-disabled'} text-white`}>Post</button>
-                        </div>
 
-                        <div className=''>
-                            <h1 className='text-2xl font-semibold text-green-500 mb-2 py-2'>Reviews :</h1>
-                            <div className='flex gap-2'>
-
-                                <Reviews></Reviews>
-                                <Reviews></Reviews>
-                            </div>
-                        </div>
-                    </section>
 
                 </div>
-                <div className='mt-10 md:mt-40'>
+                <div className='mt-10 px-2 md:mt-40'>
                     <div className='border-solid border-2 rounded-xl p-4 w-full shadow-lg'>
                         <h1 className='text-gray-900 text-3xl title-font font-medium mb-2'>
                             ৳{Price}/ <span className='font-thin'>month</span>
@@ -174,7 +182,7 @@ const Details = () => {
                             <span className='ml-auto text-gray-900'>৳{totalPrice}</span>
                         </div>
                         <div className='mt-6 mb-2'>
-                            {data?.owner === owner ? <p className='font-semibold text-center'>Already Booked!!</p> : <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
+                            {data?.id === id ? <p className='font-semibold text-center'>Already Booked!!</p> : <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
 
                         </div>
                         <p className='text-center text-gray-400 mb-6'>
@@ -183,6 +191,37 @@ const Details = () => {
                     </div>
                 </div>
             </div>
+            <section className='mt-3 md:ml-20 md:w-3/4 md:mx-auto px-2'>
+                <h1 className='text-2xl font-semibold text-green-500 mb-2 py-2'>Reviews :</h1>
+                <form onSubmit={handleComment} className="relative md:flex">
+                    <textarea
+                        id="id-01"
+                        type="text"
+                        name="comment"
+                        placeholder="Write your message"
+                        rows="3"
+                        className="relative w-full md:w-3/4 px-4 py-1 text-md placeholder-transparent transition-all border rounded outline-none peer border-lime-600 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-zinc-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+                    ></textarea>
+                    <label
+                        htmlFor="id-01"
+                        className="absolute left-2 -top-2 z-[1] px-2 text-md text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-md peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-zinc-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
+                    >
+                        Comment Your Review
+                    </label> <br />
+                    <button type='submit' className={`btn btn-success btn-sm ml-36 md:ml-2 md:px-6 hover:bg-green-500 ${user ? '' : 'btn-disabled'} text-white`}>Post</button>
+                </form>
+
+                <div className='mt-4'>
+                    <div className='md:grid grid-cols-3 gap-2'>
+                        {
+                            comments.map((c, i) => <Reviews key={i} mess={c}></Reviews>)
+                        }
+                    </div>
+                </div>
+                {
+                    comments?.length < 1 ? <h2 className='text-xl font-semibold'>No comments yet!! Be the first reviewer</h2> : ''
+                }
+            </section>
 
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
