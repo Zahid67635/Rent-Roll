@@ -16,9 +16,9 @@ const HomeCard = ({ info }) => {
                         className="relative inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
                     >
                         <img
-                            src={ownerPhoto ? ownerPhoto : "https://i.pravatar.cc/48?img=26"}
+                            src={ownerPhoto ? ownerPhoto : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6v-Quj0rUbKfkYkO5xry7QsyV_3dNemjlbw&usqp=CAU"}
                             alt="user name"
-                            title="user name"
+                            title={owner}
                             width="48"
                             height="48"
                             className="max-w-full rounded-full"
@@ -64,8 +64,7 @@ const HomeCard = ({ info }) => {
                     <Link to={`/homeDetails/${id}`}><PrimaryButton classes='px-8 py-1 rounded'>Details</PrimaryButton></Link>
                 </div>
                 <div>
-                    {/* <PrimaryButton classes='px-5 py-1 rounded'>Leave House</PrimaryButton> */}
-                    <button className='btn btn-outline btn-error btn-sm'>Leave House</button>
+                    <button className='btn btn-outline btn-error btn-sm'>Cancel</button>
                 </div>
             </div>
         </div>

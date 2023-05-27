@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import PrimaryButton from '../../Components/PrimaryButton.js';
@@ -17,14 +16,21 @@ const AllHouse = () => {
                 setHouse(data)
                 setLoading(false)
             })
-
+            .catch(er => console.log(er))
+        // fetch(`https://rent-roll-server-zahid67635.vercel.app//wishlist/${user?.email}`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        //     .catch(er => console.log(er))
     }, [])
+
     return (
         <div className='mb-10'>
             {loading ? <div className='h-screen flex items-center justify-center'><Spinner></Spinner></div> : <>
                 <div className='md:container md:mx-auto md:px-28 mb-5 p-4'>
                     <div className='md:my-6 mt-2 mb-4'>
-                        <p className='font-semibold text-xl'>Filter:</p>
+                        <p className='font-semibold text-xl'>FILTER -</p>
                         <form className='md:flex mt-2'>
                             <div className="relative my-2 md:w-60 mr-2 md:mr-8">
                                 <select
@@ -100,7 +106,7 @@ const AllHouse = () => {
                                 <PrimaryButton classes='rounded px-3 py-1 text-sm'>Apply</PrimaryButton>
                             </div>
                         </form>
-                        <h1 className='text-xl font-semibold'>{house?.length} available house found:</h1>
+                        <h1 className='text-xl font-semibold'><span className='text-3xl text-green-600'>{house?.length}</span> AVAILABLE HOUSE FOUND:</h1>
                     </div>
                     <div className='grid md:grid-cols-3 gap-7'>
                         {

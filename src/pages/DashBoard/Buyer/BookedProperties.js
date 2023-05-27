@@ -18,7 +18,7 @@ const BookedProperties = () => {
     }, [user?.email])
     console.log(properties)
     return (
-        <div className='mt-10'>
+        <div className='mt-4'>
             {
                 loading ? <div className='h-screen flex items-center justify-center'><Spinner></Spinner></div> :
                     <><h1 className='text-xl font-semibold md:text-2xl mx-3'>You have {properties?.length} Bookings for Renting:</h1>

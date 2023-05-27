@@ -1,9 +1,7 @@
-import { success } from 'daisyui/src/colors';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Lottie from 'lottie-react';
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import anim from '../../assets/login.json'
@@ -27,7 +25,7 @@ const Login = () => {
                 console.log(user);
                 form.reset()
                 navigate(from, { replace: true })
-                toast.success('Logged in')
+                toast.success('Log in Successful!')
             })
             .catch(er => {
                 console.log(er)
@@ -35,20 +33,45 @@ const Login = () => {
             })
 
     }
+
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
             .then(result => {
                 const user = result.user
                 console.log(user);
+                const userInfo = {
+                    name: user?.displayName,
+                    photoURL: user?.photoURL,
+                    contact: "017773332",
+                    email: user.email,
+                    bio: "Missing",
+                    usertype: 'buyer'
+                }
+                saveUser(userInfo)
                 navigate(from, { replace: true })
                 toast.success('Logged in')
             })
             .catch(er => console.log(er))
     }
 
+    const saveUser = (userInfo) => {
+        const user = { ...userInfo };
+        fetch(`https://rent-roll-server.vercel.app/users/${user?.email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
     return (
         <div className='grid md:grid-cols-2 my-16'>
-            <div className='w-3/4 mx-auto'>
+            <div className='w-3/4 mx-auto hidden md:block'>
 
                 <Lottie animationData={anim} loop={true}></Lottie>
 

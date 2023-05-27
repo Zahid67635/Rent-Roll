@@ -107,7 +107,7 @@ const Header = () => {
                         <div className='flex items-center'>
                             <div >
                                 {
-                                    user ? <p>Welcome, {user?.displayName}</p> : ''
+                                    user ? <p>Welcome, {user?.displayName.split(' ')[0]}</p> : ''
                                 }
                             </div>
                             {
@@ -116,7 +116,7 @@ const Header = () => {
                                         <img src={user?.photoURL} className='w-12 h-12 rounded-full bg-gray-500 border-solid border-2 border-sky-500' alt="" />
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                             <li className='hover-bordered'><Link to='/dashboard'>Dashboard</Link></li>
-                                            <li className='hover-bordered'><a>My Profile</a></li>
+                                            <li className='hover-bordered'><Link to='/profile'>My Profile</Link></li>
                                             <li className='hover-bordered'><Link to='/' type='button' onClick={logOut}>Logout</Link></li>
                                         </ul>
                                     </div> :

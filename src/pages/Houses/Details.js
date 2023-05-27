@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton';
 import { AuthContext } from '../../Contexts/ContextProvider';
 import Carousel from './Carousel';
 import Reviews from './Reviews';
+import { FaMapMarkerAlt } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 const Details = () => {
     const { user } = useContext(AuthContext)
-    const { owner, Price, space, photos, rooms, address, ownerPhoto, details, features, id } = useLoaderData()
+    const { owner, Price, space, photos, rooms, address, ownerPhoto, details, features, id, ownerEmail, ownerContact } = useLoaderData()
     const location = address.charAt(0).toUpperCase() + address.slice(1).toLowerCase();
     const [data, setData] = useState({})
     const [comments, setComments] = useState([])
@@ -20,6 +22,11 @@ const Details = () => {
     const totalPrice = parseInt(Price) + 950 + 1000
     const email = user?.email
     const navigate = useNavigate()
+    var templateParams = {
+        name: 'James',
+        notes: 'Check this out!'
+    };
+    console.log(user);
     const houseInfo = {
         owner, Price, space, photos, rooms, address, ownerPhoto, details, email, id
     }
@@ -54,6 +61,16 @@ const Details = () => {
             })
             .catch(er => console.log(er))
     }
+    const sendEmail = (e) => {
+        e.preventDefault();
+        emailjs.sendForm('service_ibh4v3j', 'template_i61ci27', templateParams, 'DKhDt38rABfRhWYlZ')
+            .then((result) => {
+                console.log(result.text);
+                toast.success('Email Sent Successfully!!')
+            }, (error) => {
+                console.log(error.text);
+            });
+    }
     const handleComment = (e) => {
         e.preventDefault()
         const comment = e.target.comment.value.trim()
@@ -67,7 +84,7 @@ const Details = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => {
+            .then(() => {
                 e.target.reset()
                 toast.success('Comment added!', {
                     position: "bottom-left"
@@ -89,9 +106,10 @@ const Details = () => {
                     <h1 className='text-3xl text-green-500 mb-4 font-semibold'>House Details</h1>
                     <div className='flex justify-between'>
                         <div className='p-1'>
-                            <h3 className='text-xl'>Location: {location}</h3>
+
+                            <p className='text-xl'><FaMapMarkerAlt className='inline mr-1 mb-1' />{location} </p>
                             <small>{rooms?.bed} Bedrooms, {rooms?.bathroom} Washrooms, {rooms?.belcony} Balcony</small> <br /> <br />
-                            <h4 className='font-bold text-sm'>Total Space-{space} Sq-ft</h4>
+                            <h4 className='font-bold text-sm'>Total Space - {space} Sq-ft</h4>
                         </div>
                         <div className='md:mr-20 mr-1'>
                             <img className='w-14 h-14 rounded-full mx-auto' src={ownerPhoto ? ownerPhoto : "https://i.ibb.co/KDzX1N8/zahid-pic.png"} alt="" />
@@ -147,7 +165,22 @@ const Details = () => {
                         </div>
                     </section>
                     {/* -------Features end----- */}
-
+                    <div className="divider"></div>
+                    <div className='mt-3'>
+                        <h1 className='font-semibold text-2xl text-green-500'>Owner Contact :</h1>
+                        <div className='flex gap-5 mt-2'>
+                            <div className='font-bold'>
+                                <p>Name:</p>
+                                <p>Cell:</p>
+                                <p>Email:</p>
+                            </div>
+                            <div>
+                                <p>{owner}</p>
+                                <p>{ownerContact}</p>
+                                <p>{ownerEmail}</p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div className='mt-10 px-2 md:mt-40'>
@@ -155,10 +188,10 @@ const Details = () => {
                         <h1 className='text-gray-900 text-3xl title-font font-medium mb-2'>
                             ৳{Price}/ <span className='font-thin'>month</span>
                         </h1>
-                        <div className='flex gap-1 mb-2'>
+                        {/* <div className='flex gap-1 mb-2'>
                             <p>Ratings</p>{' '}
                             <span>4.8 (10 reviews)</span>
-                        </div>
+                        </div> */}
                         <p>Date</p>
                         <div className='flex justify-center items-center p-2 border mt-1 mb-2'>
                             <div>{currentDate}</div>
@@ -182,11 +215,11 @@ const Details = () => {
                             <span className='ml-auto text-gray-900'>৳{totalPrice}</span>
                         </div>
                         <div className='mt-6 mb-2'>
-                            {data?.id === id ? <p className='font-semibold text-center'>Already Booked!!</p> : <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
+                            {data?.id === id ? <p className='font-semibold text-center'>Already Booked!!</p> : user?.email === ownerEmail && <label htmlFor="my-modal-3" className="hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500 text-white w-full px-4 py-1 tracking-wide transition-colors duration-300 transform rounded-md btn">Confirm</label>}
 
                         </div>
                         <p className='text-center text-gray-400 mb-6'>
-                            You won't be charged yet!
+                            If you are interested then contact with Owner!
                         </p>
                     </div>
                 </div>

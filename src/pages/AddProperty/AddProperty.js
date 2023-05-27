@@ -17,8 +17,8 @@ const AddProperty = () => {
         e.preventDefault()
         setSpin(true)
         const form = e.target
-        const locat = form.location.value.trim()
-        const Location = locat.charAt(0).toUpperCase() + locat.slice(1).toLowerCase();
+        const district = form.district.value.trim()
+        const District = district.charAt(0).toUpperCase() + district.slice(1).toLowerCase();
         const address = form.address.value.trim().toLowerCase()
         const space = form.space.value
         const bed = form.bed.value
@@ -48,7 +48,7 @@ const AddProperty = () => {
                 .catch(er => console.log(er))
         }
         const info = {
-            Location,
+            Location: District,
             address,
             space,
             rooms: {
@@ -57,10 +57,17 @@ const AddProperty = () => {
             Price,
             details,
             owner: user?.displayName,
-            email: user?.email,
+            ownerEmail: user?.email,
             ownerPhoto: user?.photoURL,
             id: String(id),
-            photos
+            photos,
+            ownerContact: '01777666555',
+            features: {
+                Lift: "Lift available",
+                View: "Open Space",
+                Gas: "Line Gas",
+                CCTV: "24/7 CCTV Coverage"
+            }
         }
         setData(info)
     }
@@ -97,13 +104,13 @@ const AddProperty = () => {
                                     <label className="label">
                                         <span className="label-text font-semibold">District</span>
                                     </label>
-                                    <input type="text" name="location" placeholder="eg: Dhaka" className="input input-bordered input-sm" required />
+                                    <input type="text" name="district" placeholder="eg: Dhaka" className="input input-bordered input-sm" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Full Address</span>
+                                        <span className="label-text font-semibold">Road Name</span>
                                     </label>
-                                    <input type="text" name="address" placeholder="eg: 51, Nazimuddin Road,Dhaka" className="input input-bordered input-sm" required />
+                                    <input type="text" name="address" placeholder="eg: Nazimuddin Road" className="input input-bordered input-sm" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -145,7 +152,7 @@ const AddProperty = () => {
                                 </div>
                                 <div className="form-control">
                                     <fieldset className="w-full space-y-1 text-gray-800">
-                                        <label htmlFor="files" className="block text-sm font-medium">Photos <span className='text-red-400'>(Max 4 Photos)</span></label>
+                                        <label htmlFor="files" className="block text-sm font-medium">Photos <span className='text-red-400'>(Max 5 Photos)</span></label>
                                         <div className="">
                                             <input type="file" name='files' multiple="multiple" accept="image/jpeg, image/png, image/jpg" className="md:px-8 px-1 py-6 border-2 border-dashed rounded-md border-gray-300 text-gray-600 bg-gray-100" required />
 

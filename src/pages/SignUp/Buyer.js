@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/ContextProvider';
+import SmallSpinner from '../../Components/SmallSpinner';
 
 const Buyer = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -10,8 +11,10 @@ const Buyer = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-    const [signUpError, setSignUpError] = useState('');
+    const [signUpError, setSignUpError] = useState('')
+    const [loading, setLoading] = useState(false)
     const handleSignUp = (data) => {
+        setLoading(true)
         setSignUpError('');
         const name = data.username
         const email = data.email
@@ -62,6 +65,7 @@ const Buyer = () => {
                             }
 
                             saveUser(userInfo)
+                            setLoading(false)
                         })
                         .catch(err => console.log(err));
 
@@ -170,7 +174,7 @@ const Buyer = () => {
 
                             <div className="col-span-full">
                                 <div className="flex items-center space-x-2">
-                                    <button type="submit" className="px-4 py-2 border rounded-md border-gray-800">Create Account</button>
+                                    <button type="submit" className="px-4 py-2 border rounded-md border-gray-800">{loading ? <SmallSpinner /> : 'Create Account'}</button>
                                 </div>
                                 {
                                     signUpError ? <p className='text-red-600'>{signUpError}</p> : ''

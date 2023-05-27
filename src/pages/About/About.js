@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
     return (
         <div>
-            <div className="px-4 mb-10 md:py-16 md:mb-20  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-20 lg:px-8 lg:py-20 text-gray-800">
+            <div className="px-4 mb-10 md:py-16 md:mb-32  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-20 lg:px-8 lg:py-20 text-gray-800">
                 <h2 className="mb-8 text-4xl font-bold leading-none text-center">What do we have to offer?</h2>
                 <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 md:pl-20">
                     <li className="flex items-center space-x-2">

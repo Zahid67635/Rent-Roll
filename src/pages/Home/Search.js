@@ -2,31 +2,65 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../Contexts/ContextProvider';
 import SearchResult from './SearchResult';
 import AutoTyping, { BlinkCursor } from 'react-auto-typing'
-import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import SmallSpinner from '../../Components/SmallSpinner';
 
 const Search = () => {
     const { user } = useContext(AuthContext)
     const [homes, setHomes] = useState([])
+    const [locat, setLocation] = useState('')
+    const [searching, setSearching] = useState(false)
+    const [value, setValue] = useState(false)
+    const items = [
+        {
+            id: 0,
+            location: 'MohaKhali, DOHS, Dhaka'
+        },
+        {
+            id: 1,
+            location: 'Santosh, Tangail'
+        },
+        {
+            id: 2,
+            location: 'Banani, Dhaka'
+        },
+        {
+            id: 3,
+            location: 'Puran bus stand, Tangail'
+        },
+        {
+            id: 4,
+            location: 'Baby stand, Tangail'
+        },
+
+    ]
+
+    const handleOnSelect = (location) => {
+        // the item selected
+        setLocation(location.location)
+        if (location?.location) {
+            setValue(true)
+        }
+    }
+    const formatResult = (item) => {
+        return (
+            <>
+                <span style={{ display: 'block', textAlign: 'left' }}>{item.location}</span>
+            </>
+        )
+    }
     const handleSearch = (e) => {
+        setSearching(true)
         e.preventDefault()
-        const form = e.target
-        const Location = form.location.value.trim().toLowerCase()
-        const district = form.district.value
+        const Location = locat.toLowerCase()
+        console.log(Location);
         if (Location) {
             fetch(`https://rent-roll-server.vercel.app/searchPropertiesByAddress/${Location}`)
                 .then(res => res.json())
                 .then(data => {
                     setHomes(data)
-                    form.reset()
-                })
-                .catch(er => console.log(er))
-        }
-        else {
-            fetch(`https://rent-roll-server.vercel.app/searchProperties/${district}`)
-                .then(res => res.json())
-                .then(data => {
-                    setHomes(data)
-                    form.reset()
+                    setSearching(false)
+
                 })
                 .catch(er => console.log(er))
         }
@@ -43,7 +77,7 @@ const Search = () => {
                         <AutoTyping
                             className="text-5xl font-bold mb-2"
                             active // <boolean>
-                            textRef={user ? `Hello ${user?.displayName}` : 'Hello User'} // <string>
+                            textRef={user ? `Hello ${user?.displayName.split(' ')[0]}` : 'Hello User'} // <string>
                             writeSpeed={100}
                             deleteSpeed={150}
                             delayToWrite={1800}
@@ -54,32 +88,28 @@ const Search = () => {
                             active // <boolean>
                             blinkSpeed={500}
                         />
-                        <p className="mb-5">WE KNOW WHAT YOU WANT! WE WILL GIVE YOU THE BEST SEARCH....</p>
+                        <p className="my-4 text-md font-semibold text-green-300">Search Your House Now!!!</p>
                         <form onSubmit={handleSearch}>
-                            <div className='text-black md:flex gap-1'>
-                                <div className="form-control w-full my-2 md:my-0">
-                                    <label className="input-group">
-                                        <span className='bg-black text-white'>Location</span>
-                                        <input type="text" name="location" placeholder="eg - nazimuddin road" className="input input-bordered w-full input-sm md:input-md" />
-                                    </label>
+                            <div className='text-black md:flex flex-none gap-2'>
+                                <div className="md:w-96 w-80">
+                                    <ReactSearchAutocomplete
+                                        items={items}
+                                        onSelect={handleOnSelect}
+                                        fuseOptions={{ keys: ["location"] }}
+                                        resultStringKeyName="location"
+                                        formatResult={formatResult}
+                                        placeholder='Where you want a house?'
+                                        styling={{ fontSize: '16px' }}
+                                    />
+                                </div>
+                                <div className='md:ml-2 mt-2 md:mt-0'>
+                                    <button disabled={value ? false : true} type="submit" className={`px-6 py-2 font-semibold border rounded-3xl text-white`}>{searching ? <SmallSpinner /> : 'Search'}</button>
                                 </div>
 
-                                <div className="form-control">
-                                    <label className="input-group">
-                                        <select name="district" className="select select-bordered text-black font-bold" defaultValue="Dhaka">
 
-                                            <option value="Dhaka">Dhaka</option>
-                                            <option value="Tangail">Tangail</option>
-                                            <option value="Mymensingh">Mymensingh</option>
-                                        </select>
-                                    </label>
-                                </div>
                             </div>
-                            <div className='mt-3'>
-                                <button type="submit" className="px-6 py-2 font-semibold border rounded text-white hover:bg-slate-600">SEARCH</button>
-                            </div>
-                            {homes?.length ? <div className='p-2'>
-                                <h1>Found {homes?.length} houses <a href='#search' className="link">View</a></h1>
+                            {homes?.length ? <div className='p-2 font-semibold text-green-300'>
+                                <h1>Found {homes?.length} houses <a href='#search' className="link text-lg">View</a></h1>
                             </div> : ''}
                         </form>
                     </div>

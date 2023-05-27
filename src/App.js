@@ -6,17 +6,17 @@ import About from './pages/About/About';
 import AddProperty from './pages/AddProperty/AddProperty';
 import BookedProperties from './pages/DashBoard/Buyer/BookedProperties';
 import Host from './pages/DashBoard/Buyer/Host';
-import DashBoard from './pages/DashBoard/DashBoard';
 import SoldProperties from './pages/DashBoard/SoldProperties';
 import Table from './pages/DashBoard/Table';
 import Home from './pages/Home/Home';
-import SearchResult from './pages/Home/SearchResult';
 import AllHouse from './pages/Houses/AllHouse';
 import Details from './pages/Houses/Details';
 import Login from './pages/Login/Login';
 import Buyer from './pages/SignUp/Buyer';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Error from './Shared/Error';
+import Wishlist from './pages/DashBoard/Wishlist';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   const router = createBrowserRouter([
@@ -50,6 +50,10 @@ function App() {
           path: '/signup',
           element: <Buyer></Buyer>
         },
+        {
+          path: '/profile',
+          element: <Profile></Profile>
+        }
 
       ]
     },
@@ -76,6 +80,10 @@ function App() {
         {
           path: '/dashboard/addProperty',
           element: <AddProperty></AddProperty>
+        },
+        {
+          path: '/dashboard/wishlist',
+          element: <Wishlist></Wishlist>
         },
       ]
     },
