@@ -62,6 +62,10 @@ function App() {
       element: <DashBoardLayout></DashBoardLayout>,
       children: [
         {
+          path: '/dashboard',
+          element: <BookedProperties></BookedProperties>
+        },
+        {
           path: '/dashboard/user-requests',
           element: <Table></Table>,
         },

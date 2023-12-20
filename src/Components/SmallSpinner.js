@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const SmallSpinner = () => {
-    return (
-        <div className='flex justify-center items-center h-full'>
-            <div className='w-6 h-6 border-2 border-dashed rounded-full animate-spin border-yellow-400'></div>
-        </div>
-    )
-}
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="w-5 h-5 border-2 border-indigo-400 border-dashed rounded-full animate-spin"></div>
+    </div>
+  );
+};
 
-export default SmallSpinner
+export default SmallSpinner;

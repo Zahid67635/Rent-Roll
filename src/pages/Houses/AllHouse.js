@@ -5,7 +5,6 @@ import Spinner from '../../Components/Spinner.js';
 import House from './House.js';
 import Pagination from './Pagination.js';
 
-
 const AllHouse = () => {
     const [house, setHouse] = useState([])
     const [loading, setLoading] = useState(true)
@@ -17,12 +16,6 @@ const AllHouse = () => {
                 setLoading(false)
             })
             .catch(er => console.log(er))
-        // fetch(`https://rent-roll-server-zahid67635.vercel.app//wishlist/${user?.email}`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //     })
-        //     .catch(er => console.log(er))
     }, [])
 
     return (
@@ -101,9 +94,6 @@ const AllHouse = () => {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                            </div>
-                            <div className='relative my-3 text-center md:ml-2'>
-                                <PrimaryButton classes='rounded px-3 py-1 text-sm'>Apply</PrimaryButton>
                             </div>
                         </form>
                         <h1 className='text-xl font-semibold'><span className='text-3xl text-green-600'>{house?.length}</span> AVAILABLE HOUSE FOUND:</h1>
