@@ -33,7 +33,7 @@ const BookedProperties = () => {
           {properties?.length === 0 && (
             <Link
               to="/allproperties"
-              className="p-2 ml-2 text-black transition duration-300 rounded bg-white-500 outline outline-1 outline-black hover:bg-slate-700 hover:text-white"
+              className="p-2 ml-2 text-indigo-500 underline transition duration-300 rounded bg-white-500"
             >
               Book Now
             </Link>

@@ -56,7 +56,11 @@ const Header = () => {
                 : "invisible opacity-0"
             }`}
           >
-            <li role="none" className="flex items-stretch">
+            <li
+              role="none"
+              className="flex items-stretch"
+              onClick={() => setIsToggleOpen(!isToggleOpen)}
+            >
               <Link
                 to="/"
                 role="menuitem"
@@ -67,7 +71,11 @@ const Header = () => {
                 <span>Home</span>
               </Link>
             </li>
-            <li role="none" className="flex items-stretch py-2 md:py-0">
+            <li
+              role="none"
+              className="flex items-stretch py-2 md:py-0"
+              onClick={() => setIsToggleOpen(!isToggleOpen)}
+            >
               <Link
                 to="/allproperties"
                 role="menuitem"
@@ -79,7 +87,11 @@ const Header = () => {
                 <span>All Properties</span>
               </Link>
             </li>
-            <li role="none" className="flex items-stretch">
+            <li
+              role="none"
+              className="flex items-stretch"
+              onClick={() => setIsToggleOpen(!isToggleOpen)}
+            >
               <Link
                 to="/about"
                 role="menuitem"
@@ -96,14 +108,20 @@ const Header = () => {
               ""
             ) : (
               <>
-                <li className="items-center pt-5 mb-1 md:pt-0 md:flex md:mx-3 md:mb-0">
+                <li
+                  className="items-center pt-5 mb-1 md:pt-0 md:flex md:mx-3 md:mb-0"
+                  onClick={() => setIsToggleOpen(!isToggleOpen)}
+                >
                   <Link to="/login">
                     <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 border rounded whitespace-nowrap border-zinc-500 text-zinc-500 focus:border-zinc-700 focus:text-zinc-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-zinc-300 disabled:text-zinc-300 disabled:shadow-none">
                       <span className="font-bold">SIGNIN</span>
                     </button>
                   </Link>
                 </li>
-                <li className="items-center pt-2 md:flex md:mr-2 md:pt-0">
+                <li
+                  className="items-center pt-2 md:flex md:mr-2 md:pt-0"
+                  onClick={() => setIsToggleOpen(!isToggleOpen)}
+                >
                   <Link to="/signup">
                     <button className="h-10 gap-2 px-5 font-semibold text-white rounded hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-lime-500">
                       <span className="font-bold">SIGNUP</span>
